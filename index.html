@@ -77,6 +77,9 @@
     content: "Figure coming soon"; display: flex; align-items: center; justify-content: center;
     height: 220px; border: 2px dashed var(--line); border-radius: 6px; color: var(--muted); font-size: .9rem;
   }
+  .gallery { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .gallery img { height: 200px; object-fit: contain; background: #f3f5f7; }
+  @media (max-width: 760px) { .gallery { grid-template-columns: 1fr; } }
   .highlight { border-left: 3px solid var(--accent); padding-left: 12px; }
 
   /* Skills */
@@ -138,20 +141,35 @@
       <!-- PROJECT 1 — GSS heat exchanger -->
       <article class="project">
         <div>
-          <div class="kicker">Internship · GSS (SONATRACH–SINOPEC) · 2024</div>
-          <h3>Heat exchanger study for an MS5002B gas turbine</h3>
-          <p>Gas turbine efficiency falls as ambient temperature rises. During the hot season, the MS5002B turbine's efficiency dropped as low as 27 %. I studied a heat exchanger solution to counter this loss.</p>
-          <p class="highlight">With the exchanger, the turbine keeps its usual efficiency of about 33 % through the summer, an average gain of about 3 points over the year.</p>
+          <div class="kicker">Licence thesis · Internship at GSS (SONATRACH–SINOPEC) · 2024</div>
+          <h3>Cooling the air intake of an MS5002B gas turbine</h3>
+          <p>A gas turbine loses efficiency when the air it takes in is hot. The MS5002B is rated at 28 % efficiency at 15 °C, but at the Zarzaitine site the ambient temperature reaches 41 °C in summer. I designed a finned-tube heat exchanger to cool the intake air before it enters the compressor.</p>
           <dl>
-            <dt>Role</dt><dd>Engineering intern</dd>
-            <dt>Focus</dt><dd>Effect of ambient temperature on turbine efficiency</dd>
+            <dt>Design</dt><dd>Continuous finned-tube exchanger (copper tubes, aluminium fins) modelled in SolidWorks and placed in the turbine intake</dd>
+            <dt>Simulation</dt><dd>CFD on a representative sub-model in SolidWorks Flow Simulation: 9 cases, 3 fin counts (200 / 250 / 376) × 3 ambient temperatures (20 / 32 / 40 °C), chilled water at 5 °C</dd>
+            <dt>Analysis</dt><dd>Outlet air temperature turned into monthly turbine efficiency using a temperature-correction rule based on manufacturer data</dd>
           </dl>
-          <div class="chips"><span class="chip">Heat transfer</span><span class="chip">Thermodynamics</span><span class="chip">Gas turbines</span></div>
+          <p class="highlight">The 376-fin design gave the coldest outlet air all year. In July, estimated efficiency rises from 20.5 % to 27.0 %. Over the year, the average rises from 23.5 % to 27.9 %.</p>
+          <div class="chips"><span class="chip">Heat exchangers</span><span class="chip">CFD</span><span class="chip">SolidWorks</span><span class="chip">Flow Simulation</span><span class="chip">Gas turbines</span></div>
         </div>
         <figure>
-          <img src="images/gss-turbine.png" alt="Turbine efficiency with and without heat exchanger" onerror="this.parentElement.classList.add('missing')">
-          <figcaption>Efficiency over the year with and without the exchanger.</figcaption>
+          <img src="images/gss-efficiency.png" alt="Turbine efficiency per month with and without the heat exchanger" onerror="this.parentElement.classList.add('missing')">
+          <figcaption>Estimated efficiency per month, without the exchanger and with each fin count.</figcaption>
         </figure>
+        <div class="gallery">
+          <figure>
+            <img src="images/gss-cad.jpg" alt="SolidWorks assembly of the finned-tube heat exchanger" onerror="this.parentElement.classList.add('missing')">
+            <figcaption>SolidWorks assembly: casing, 376 fins, copper tubes, collectors.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/gss-intake.jpg" alt="Heat exchanger placed in the turbine air intake duct" onerror="this.parentElement.classList.add('missing')">
+            <figcaption>Exchanger installed in the turbine air intake.</figcaption>
+          </figure>
+          <figure>
+            <img src="images/gss-cfd.jpg" alt="Flow Simulation result showing streamlines and air temperature" onerror="this.parentElement.classList.add('missing')">
+            <figcaption>Flow Simulation result: air streamlines and temperature, 40 °C inlet, 376 fins.</figcaption>
+          </figure>
+        </div>
       </article>
 
       <!-- PROJECT 2 — Turbulent duct flow -->
