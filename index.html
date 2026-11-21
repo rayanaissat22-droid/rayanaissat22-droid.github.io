@@ -126,6 +126,10 @@
   .resume-dl { text-align: center; margin: -26px 0 0; position: relative; }
   .resume-dl .btn { border-radius: 999px; padding: 13px 26px; background: var(--ink); color: #fff; border-color: var(--ink); }
   .resume-dl .btn:hover { background: var(--hot); border-color: var(--hot); }
+  .cv .target { color: #e0531f; font-weight: 600; font-size: 14px; margin-top: 4px; }
+  .cv .plain { font-size: 14px; }
+  .cv .row i { font-style: normal; color: #2b5c8a; font-size: 13px; font-weight: 600; margin-left: 4px; }
+  .cv .links { margin-top: 2px; }
   .resume-sheet { max-width: 820px; margin: 48px auto 96px; padding: 48px 56px; border: 1px solid var(--line); box-shadow: 0 1px 0 var(--line); }
   @media (max-width: 900px) { .resume-sheet { padding: 28px 20px; margin: 36px 16px 72px; } .cv .row { flex-direction: column; gap: 0; } .cv .cols { grid-template-columns: 1fr; } }
 .cv { font-family: "Archivo", "Segoe UI", system-ui, sans-serif; color: #13212e; font-size: 15px; line-height: 1.5; }
@@ -585,53 +589,62 @@
   </article>
   <article class="page resume" id="resume" hidden style="padding-top:0">
     <div class="resume-hero"><h1>Resume</h1></div>
-    <div class="resume-dl"><a class="btn" href="cv.pdf" download>Download resume PDF</a></div>
+    <div class="resume-dl"><a class="btn" href="cv.pdf" download>Download resume (English)</a> <a class="btn" href="cv_fr.pdf" download>CV en français</a></div>
     <div class="resume-sheet">
 <div class="cv">
   <header class="cv-head">
     <h2>Mohamed Rayan Aissat</h2>
-    <p>Toulouse, France · <a href="mailto:rayan.aissat22@gmail.com">rayan.aissat22@gmail.com</a> · <a href="https://www.linkedin.com/in/mohamed-rayan-aissat-56880b337">linkedin.com/in/mohamed-rayan-aissat-56880b337</a> · <a href="https://rayanaissat22-droid.github.io">rayanaissat22-droid.github.io</a></p>
+    <p>Toulouse, France · <a href="mailto:rayan.aissat22@gmail.com">rayan.aissat22@gmail.com</a> · +33 7 51 17 39 01</p>
+    <p class="links">Portfolio: <a href="https://rayanaissat22-droid.github.io">rayanaissat22-droid.github.io</a> · GitHub: <a href="https://github.com/rayanaissat22-droid">github.com/rayanaissat22-droid</a> · LinkedIn: <a href="https://www.linkedin.com/in/mohamed-rayan-aissat-56880b337">mohamed-rayan-aissat-56880b337</a></p>
   </header>
 
   <section>
+    <h3>Profile</h3>
+    <p class="plain">M2 MSME student at Université Toulouse III, specialising in heat transfer, fluid mechanics and numerical simulation. Experience in design and thermal-fluid simulation applied to energy systems. Looking for a 4 to 6 month final-year internship from February 2027.</p>
+  </section>
+
+  <section>
     <h3>Education</h3>
-    <div class="row"><div><strong>Master MSME, Modelling and Simulation in Mechanics and Energy</strong><em>Université Paul Sabatier Toulouse III</em></div><span>2026 – 2027</span></div>
-    <div class="row"><div><strong>Master 1, Mechanical Manufacturing</strong><em>Université de Constantine 1, Algeria</em></div><span></span></div>
-    <div class="row"><div><strong>Licence, Mechanical Production and Industrialisation</strong><em>Université de Constantine 1, Algeria</em></div><span>2021 – 2024</span></div>
+    <div class="row"><div><strong>MSc in Modelling and Simulation in Mechanics and Energy (MSME), M1 and M2</strong><em>Université Toulouse III – Paul Sabatier. Heat transfer, CFD, turbulence, numerical methods</em></div><span>2025 – 2027</span></div>
+    <div class="row"><div><strong>M1 Mechanical Manufacturing (completed), Licence in Mechanical Production and Industrialisation</strong><em>Université de Constantine 1 – ISTA, Algeria</em></div><span>2021 – 2025</span></div>
   </section>
 
   <section>
-    <h3>Experience</h3>
-    <div class="row"><div><strong>Engineering intern, GSS (SONATRACH – SINOPEC)</strong><em>Zarzaitine oil field, Algeria</em></div><span>Mar – Apr 2024</span></div>
+    <h3>Professional experience</h3>
+    <div class="row"><div><strong>Engineering intern, SONATRACH – SINOPEC joint venture (GSS)</strong><em>Maintenance department, Zarzaïtine, Algeria</em></div><span>Mar – Apr 2024</span></div>
     <ul>
-      <li>Studied an air-intake heat exchanger to limit the summer efficiency loss of an MS5002B gas turbine.</li>
-      <li>Modelled a finned-tube exchanger in SolidWorks and compared fin counts with SolidWorks Flow Simulation.</li>
-      <li>Worked within the site's safety rules and procedures, alongside the operations team.</li>
+      <li>Designed in SolidWorks an inlet-air cooling heat exchanger for an MS5002B gas turbine.</li>
+      <li>Flow Simulation study of fin count and inlet temperature: estimated July efficiency from 20.5&nbsp;% to 27.0&nbsp;%.</li>
     </ul>
+    <div class="row"><div><strong>Engineering intern, Algerian Cement Industrial Group (GICA)</strong><em>Maintenance department, Bouira, Algeria. Diagnosed an industrial kiln with recurring failures, identified the probable causes and carried out corrective maintenance with the team.</em></div><span>Mar – May 2023</span></div>
   </section>
 
   <section>
-    <h3>Projects</h3>
-    <div class="row"><div><strong>Heat conduction in a bar with oscillating end temperatures</strong><em>Python solver, explicit and implicit schemes, validated against an exact solution</em></div><span>2026</span></div>
-    <div class="row"><div><strong>Heat transfer studies in COMSOL</strong><em>Tube heat exchanger, solar pond and Canadian well, coupled flow and heat transfer</em></div><span>2026</span></div>
-    <div class="row"><div><strong>Lid-driven cavity in OpenFOAM</strong><em>Mesh and convection-scheme study against reference data</em></div><span>2026</span></div>
-    <div class="row"><div><strong>Turbulent flow in a rectangular duct</strong><em>RANS mixing-length solver written in Python, checked on the Moody diagram</em></div><span>2026</span></div>
-    <div class="row"><div><strong>Compressible laminar mixing layer</strong><em>Similarity solutions by shooting method (RK4, Newton)</em></div><span>2026</span></div>
-    <div class="row"><div><strong>Two-axis solar tracker</strong><em>Designed, built and programmed: steel frame, stepper motors, Arduino, light sensors</em></div><span>Personal</span></div>
+    <h3>Technical projects</h3>
+    <div class="row"><div><strong>Heat conduction in a bar with oscillating end temperatures</strong> <i>Python</i><em>1D transient solver, explicit and implicit; validated against an exact solution, convergence order 2.00.</em></div><span>MSc 2</span></div>
+    <div class="row"><div><strong>Heat transfer studies</strong> <i>COMSOL</i><em>Tube heat exchanger: Nu = 1.97 Re<sup>0.40</sup>, best performance criterion at Re ≈ 200; solar pond, Canadian well.</em></div><span>MSc 2</span></div>
+    <div class="row"><div><strong>Lid-driven cavity</strong> <i>OpenFOAM, ParaView</i><em>1 024 to 16 384 cells, linear vs upwind; RMS error 0.19&nbsp;% of lid speed against Ghia et al.</em></div><span>MSc 2</span></div>
+    <div class="row"><div><strong>Turbulent flow in a rectangular duct</strong> <i>Python, RANS</i><em>RANS solver, mixing length with Van Driest damping; friction within 5&nbsp;% of Dean’s correlation.</em></div><span>MSc 2</span></div>
+    <div class="row"><div><strong>Compressible laminar mixing layer</strong> <i>Python</i><em>Shooting method (RK4, Newton), validated against Schlichting to 2·10⁻⁴.</em></div><span>MSc 2</span></div>
+    <div class="row"><div><strong>Plate with a hole under tension</strong> <i>COMSOL, finite elements</i><em>Stress concentration validated against Kirsch’s analytical solution.</em></div><span>MSc 1</span></div>
+    <div class="row"><div><strong>Two-axis solar tracker</strong> <i>SolidWorks, Arduino</i><em>Designed, built and programmed: steel frame, steppers, light sensors.</em></div><span>Personal</span></div>
   </section>
 
   <section class="cols">
     <div>
-      <h3>Skills</h3>
-      <p><strong>Simulation:</strong> ANSYS Fluent, OpenFOAM, ParaView, COMSOL Multiphysics, Abaqus, FreeFem++, SolidWorks Flow Simulation</p>
-      <p><strong>CAD:</strong> SolidWorks, CATIA V5 / 3DEXPERIENCE</p>
-      <p><strong>Programming:</strong> Python (NumPy, SciPy, pandas, Matplotlib), MATLAB, Arduino</p>
+      <h3>Technical skills</h3>
+      <p><strong>CFD:</strong> ANSYS Fluent, OpenFOAM, ParaView</p>
+      <p><strong>Thermal simulation:</strong> COMSOL Multiphysics, SolidWorks Flow Simulation</p>
+      <p><strong>Numerical methods:</strong> finite differences, finite elements (FreeFem++), RK4, Newton</p>
+      <p><strong>Programming:</strong> Python (NumPy, SciPy, pandas, Matplotlib), MATLAB, LaTeX</p>
+      <p><strong>CAD:</strong> SolidWorks, CATIA V5</p>
     </div>
     <div>
-      <h3>Languages</h3>
+      <h3>Languages and interests</h3>
+      <p>English C2 (EF SET 77/100)</p>
+      <p>French C1 (TCF)</p>
       <p>Arabic and Kabyle: native</p>
-      <p>French: C1 (TCF)</p>
-      <p>English: C2 (EF SET)</p>
+      <p>Interests: football, martial arts, reading, medieval history</p>
     </div>
   </section>
 </div>
