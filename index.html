@@ -104,6 +104,8 @@
   .gallery a { display: block; background: var(--steel); }
   .gallery img { width: 100%; aspect-ratio: 16 / 10; object-fit: contain; }
 
+  .repo { margin-top: 22px; font-weight: 600; }
+  .steps-4 { grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .soon { margin-top: 28px; font-size: 15px; color: var(--ink-2); }
 
   /* ---------- Skills ---------- */
@@ -191,14 +193,14 @@
           </ul>
         </div>
         <div class="case-main">
-          <p>A gas turbine loses efficiency when the air it takes in is hot. The MS5002B is rated at 28 % efficiency at 15 °C, but at the Zarzaitine oil field the air reaches 41 °C in summer.</p>
+          <p>A gas turbine loses efficiency when the air it takes in is hot. The MS5002B is rated at 28&nbsp;% efficiency at 15 °C, but at the Zarzaitine oil field the air reaches 41 °C in summer.</p>
           <p>I designed a finned-tube heat exchanger that cools the intake air with chilled water before it reaches the compressor, then simulated it to choose the number of fins.</p>
 
-          <p class="result">With 376 fins, estimated efficiency in July rises from <b>20.5 %</b> to <b>27.0 %</b>.
-            <small>Over the whole year, the average rises from 23.5 % to 27.9 %.</small></p>
+          <p class="result">With 376 fins, estimated efficiency in July rises from <b>20.5&nbsp;%</b> to <b>27.0&nbsp;%</b>.
+            <small>Over the whole year, the average rises from 23.5&nbsp;% to 27.9&nbsp;%.</small></p>
 
           <figure class="chart">
-            <a href="images/gss-efficiency.png" target="_blank"><img src="images/gss-efficiency.png" alt="Line chart of turbine efficiency per month. Without the exchanger it falls from about 27 % in winter to 20.5 % in July. With 376 fins it stays between 27 % and 29 %." width="1650" height="840"></a>
+            <a href="images/gss-efficiency.png" target="_blank"><img src="images/gss-efficiency.png" alt="Line chart of turbine efficiency per month. Without the exchanger it falls from about 27&nbsp;% in winter to 20.5&nbsp;% in July. With 376 fins it stays between 27&nbsp;% and 29&nbsp;%." width="1650" height="840"></a>
             <figcaption>Estimated turbine efficiency per month, without the exchanger and with 200, 250 and 376 fins.</figcaption>
           </figure>
 
@@ -228,18 +230,49 @@
       <!-- Turbulent duct flow -->
       <article class="case">
         <div class="case-side">
-          <p class="ctx">M2 MSME numerical project, 2026</p>
-          <h3>Turbulent flow in a rectangular duct</h3>
+          <p class="ctx">M2 MSME numerical project, Université Paul Sabatier, 2026</p>
+          <h3>Turbulent flow in a smooth rectangular duct</h3>
           <ul class="tools">
-            <li>Python</li>
-            <li>RANS turbulence models</li>
-            <li>Finite differences</li>
+            <li>Python, NumPy, Matplotlib</li>
+            <li>Unsteady RANS</li>
+            <li>Mixing-length model, Van Driest damping</li>
+            <li>Finite differences, explicit Euler</li>
           </ul>
+          <p class="repo"><a href="https://github.com/rayanaissat22-droid/turbulent-duct-flow" target="_blank" rel="noopener">See the code on GitHub</a></p>
         </div>
         <div class="case-main">
-          <p>I am writing my own solver to predict the mean velocity profile in a channel, adding complexity in three steps: laminar flow, then a mixing-length model with Van Driest damping, then one- and two-equation turbulence models.</p>
-          <p>Each step is checked against the log law of the wall and against friction factors from the Moody diagram.</p>
-          <p class="soon">Figures and code will be added here.</p>
+          <p>The goal is to predict the mean velocity profile of water flowing in a wide, flat duct, driven by a pressure gradient. Because the duct is much wider than it is high, the flow reduces to one velocity u(z) across the height.</p>
+          <p>I wrote the solver from scratch in Python, validated it on laminar flow, then added a zero-equation turbulence model and compared two ways of limiting the mixing length in the core of the channel.</p>
+
+          <p class="result">Above Re ≈ 14&nbsp;000, the predicted friction factor stays within <b>5&nbsp;%</b> of Dean's correlation for plane channels.
+            <small>Eight runs from Re ≈ 3&nbsp;300 to 36&nbsp;000. The gap shrinks as the flow becomes fully turbulent.</small></p>
+
+          <figure class="chart">
+            <a href="images/tp-moody.png" target="_blank"><img src="images/tp-moody.png" alt="Friction factor against Reynolds number on log axes. Simulated points for both models follow Dean's line closely above Re 14&nbsp;000 and sit above it at low Reynolds numbers." width="1650" height="870"></a>
+            <figcaption>Friction factor from the simulations, compared with the Dean and Blasius correlations.</figcaption>
+          </figure>
+
+          <ol class="steps steps-4">
+            <li><strong>Validate</strong>Laminar case solved with explicit Euler and centred differences. Maximum error against the exact Poiseuille profile: 0.005&nbsp;%.</li>
+            <li><strong>Model</strong>Unsteady RANS with a Boussinesq eddy viscosity, from Prandtl's mixing length with Van Driest damping (A⁺ = 26).</li>
+            <li><strong>Compare</strong>Two core models: mixing length capped at 0.09 H, or a parabolic shape. The capped model follows the log law of the wall more closely.</li>
+            <li><strong>Sweep</strong>Eight pressure gradients, with the grid refined so the first point stays at z⁺ ≤ 1, to place the results on the Moody diagram.</li>
+          </ol>
+
+          <div class="gallery">
+            <figure>
+              <a href="images/tp-laminar.png" target="_blank"><img src="images/tp-laminar.png" alt="Laminar velocity profile: solver points on the exact Poiseuille parabola" loading="lazy"></a>
+              <figcaption>Laminar check against the exact Poiseuille profile</figcaption>
+            </figure>
+            <figure>
+              <a href="images/tp-mixing-length.png" target="_blank"><img src="images/tp-mixing-length.png" alt="Mixing length across the channel for the capped and parabolic models" loading="lazy"></a>
+              <figcaption>Mixing length across the channel, both models</figcaption>
+            </figure>
+            <figure>
+              <a href="images/tp-wall-law.png" target="_blank"><img src="images/tp-wall-law.png" alt="Velocity in wall units against distance from the wall, compared with the viscous sublayer and log law" loading="lazy"></a>
+              <figcaption>Velocity in wall units against the law of the wall</figcaption>
+            </figure>
+          </div>
         </div>
       </article>
 
