@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Rayan Aissat — Thermal & Simulation Engineering</title>
+<meta name="description" content="Portfolio of Mohamed Rayan Aissat, M2 MSME student at Université Paul Sabatier Toulouse III — thermal engineering and numerical simulation.">
+<style>
+  :root {
+    --ink: #1b2430;
+    --muted: #5b6675;
+    --line: #e3e7ec;
+    --bg: #fbfbf9;
+    --card: #ffffff;
+    --accent: #c4471d;      /* heat orange */
+    --accent-soft: #fbeee8;
+    --cool: #1f5f8b;        /* coolant blue */
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+    color: var(--ink); background: var(--bg); line-height: 1.6;
+  }
+  a { color: var(--cool); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header { border-bottom: 1px solid var(--line); background: var(--card); }
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+  nav .name { font-weight: 700; letter-spacing: .2px; }
+  nav ul { display: flex; gap: 22px; list-style: none; font-size: .95rem; }
+  nav a { color: var(--muted); text-decoration: none; }
+  nav a:hover { color: var(--accent); }
+
+  .hero { padding: 64px 0 56px; }
+  .hero .tag { color: var(--accent); font-weight: 600; font-size: .9rem; text-transform: uppercase; letter-spacing: 1.5px; }
+  .hero h1 { font-size: 2.6rem; line-height: 1.15; margin: 10px 0 16px; }
+  .hero p { color: var(--muted); max-width: 640px; font-size: 1.08rem; }
+  .status {
+    display: inline-block; margin-top: 22px; padding: 8px 14px; border-radius: 6px;
+    background: var(--accent-soft); color: var(--accent); font-weight: 600; font-size: .95rem;
+  }
+  .buttons { margin-top: 26px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    padding: 10px 18px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: .95rem;
+    border: 1px solid var(--ink); color: var(--ink);
+  }
+  .btn.primary { background: var(--ink); color: #fff; }
+
+  /* Sections */
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 1.6rem; margin-bottom: 8px; }
+  .lead { color: var(--muted); margin-bottom: 32px; }
+
+  /* Project cards */
+  .project {
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    padding: 28px; margin-bottom: 28px;
+    display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px;
+  }
+  .project .kicker { font-size: .8rem; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); }
+  .project h3 { font-size: 1.3rem; margin: 6px 0 12px; }
+  .project p { margin-bottom: 12px; }
+  .project dl { display: grid; grid-template-columns: 90px 1fr; gap: 6px 12px; font-size: .95rem; margin: 14px 0; }
+  .project dt { font-weight: 600; color: var(--muted); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .chip { font-size: .8rem; padding: 3px 10px; border-radius: 20px; background: #eef2f6; color: var(--cool); }
+  .project .links { margin-top: 14px; font-size: .95rem; }
+  .project .links a { margin-right: 16px; }
+
+  figure { align-self: start; }
+  figure img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  figcaption { font-size: .85rem; color: var(--muted); margin-top: 8px; }
+  /* Shown only while an image file is still missing */
+  figure.missing img { display: none; }
+  figure.missing::before {
+    content: "Figure coming soon"; display: flex; align-items: center; justify-content: center;
+    height: 220px; border: 2px dashed var(--line); border-radius: 6px; color: var(--muted); font-size: .9rem;
+  }
+  .highlight { border-left: 3px solid var(--accent); padding-left: 12px; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .skills div { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }
+  .skills h4 { margin-bottom: 8px; }
+  .skills ul { list-style: none; color: var(--muted); font-size: .95rem; }
+
+  /* Timeline */
+  .timeline { list-style: none; }
+  .timeline li { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px dashed var(--line); }
+  .timeline .when { color: var(--muted); font-size: .95rem; }
+
+  footer { padding: 40px 0; color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); text-align: center; }
+
+  @media (max-width: 760px) {
+    nav ul { display: none; }
+    .hero h1 { font-size: 2rem; }
+    .project { grid-template-columns: 1fr; }
+    .skills { grid-template-columns: 1fr; }
+    .timeline li { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <span class="name">M. Rayan Aissat</span>
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div class="tag">Thermal engineering · Numerical simulation</div>
+    <h1>Mohamed Rayan Aissat</h1>
+    <p>Master 2 student in Modelling and Simulation in Mechanics and Energy (MSME) at Université Paul Sabatier Toulouse III, with a background in mechanical manufacturing. I work on heat transfer, fluid flow and mechanical design, from hand-written solvers to industrial simulation tools.</p>
+    <div class="status">Looking for a 4–6 month end-of-studies internship from February 2027</div>
+    <div class="buttons">
+      <a class="btn primary" href="#projects">See my projects</a>
+      <a class="btn" href="cv.pdf">Download CV</a>
+      <a class="btn" href="https://www.linkedin.com/in/mohamed-rayan-aissat-56880b337" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+
+  <section id="projects">
+    <div class="wrap">
+      <h2>Projects</h2>
+      <p class="lead">Three projects across thermal engineering, turbulence modelling and mechanical design.</p>
+
+      <!-- PROJECT 1 — GSS heat exchanger -->
+      <article class="project">
+        <div>
+          <div class="kicker">Internship · GSS (SONATRACH–SINOPEC) · 2024</div>
+          <h3>Heat exchanger study for an MS5002B gas turbine</h3>
+          <p>Gas turbine efficiency falls as ambient temperature rises. During the hot season, the MS5002B turbine's efficiency dropped as low as 27 %. I studied a heat exchanger solution to counter this loss.</p>
+          <p class="highlight">With the exchanger, the turbine keeps its usual efficiency of about 33 % through the summer, an average gain of about 3 points over the year.</p>
+          <dl>
+            <dt>Role</dt><dd>Engineering intern</dd>
+            <dt>Focus</dt><dd>Effect of ambient temperature on turbine efficiency</dd>
+          </dl>
+          <div class="chips"><span class="chip">Heat transfer</span><span class="chip">Thermodynamics</span><span class="chip">Gas turbines</span></div>
+        </div>
+        <figure>
+          <img src="images/gss-turbine.png" alt="Turbine efficiency with and without heat exchanger" onerror="this.parentElement.classList.add('missing')">
+          <figcaption>Efficiency over the year with and without the exchanger.</figcaption>
+        </figure>
+      </article>
+
+      <!-- PROJECT 2 — Turbulent duct flow -->
+      <article class="project">
+        <div>
+          <div class="kicker">M2 MSME · Numerical project · 2026</div>
+          <h3>Turbulent flow in a rectangular duct: a RANS solver in Python</h3>
+          <p>I wrote my own solver to predict the mean velocity profile in a channel. The model gets more complex in three steps: laminar flow, then a zero-equation mixing-length model with Van Driest damping, then one- and two-equation turbulence models.</p>
+          <p>Each step is validated by checking the wall law u⁺(z⁺) and comparing friction factors against the Moody diagram.</p>
+          <dl>
+            <dt>Method</dt><dd>Explicit time-marching to steady state, finite differences</dd>
+            <dt>Case</dt><dd>Half-height H = 0.01 m, water, imposed pressure gradient</dd>
+          </dl>
+          <div class="chips"><span class="chip">Python</span><span class="chip">RANS</span><span class="chip">Turbulence modelling</span><span class="chip">Validation</span></div>
+          <div class="links"><a href="https://github.com/rayanaissat22-droid/turbulent-duct-flow">Code on GitHub →</a></div>
+        </div>
+        <figure>
+          <img src="images/tp-uplus.png" alt="u+ versus z+ wall law comparison" onerror="this.parentElement.classList.add('missing')">
+          <figcaption>Velocity profile in wall units (semi-log) compared with the log law.</figcaption>
+        </figure>
+      </article>
+
+      <!-- PROJECT 3 — Solar tracker -->
+      <article class="project">
+        <div>
+          <div class="kicker">Personal project</div>
+          <h3>Two-axis photovoltaic solar tracker</h3>
+          <p>I designed and built a solar tracker that orients a PV panel on two axes to follow the sun. I handled both the mechanical design and the embedded control.</p>
+          <dl>
+            <dt>Mechanics</dt><dd>Design and construction of the structure and both rotation axes</dd>
+            <dt>Control</dt><dd>Arduino program driving the two axes</dd>
+          </dl>
+          <div class="chips"><span class="chip">Arduino</span><span class="chip">Mechanical design</span><span class="chip">Prototyping</span></div>
+          <div class="links"><a href="https://github.com/rayanaissat22-droid/solar-tracker">Code & CAD on GitHub →</a></div>
+        </div>
+        <figure>
+          <img src="images/solar-tracker.jpg" alt="Two-axis solar tracker prototype" onerror="this.parentElement.classList.add('missing')">
+          <figcaption>The built prototype.</figcaption>
+        </figure>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <h2>Skills</h2>
+      <p class="lead">Tools I use for design, simulation and analysis.</p>
+      <div class="skills">
+        <div>
+          <h4>Simulation</h4>
+          <ul><li>ANSYS Fluent</li><li>COMSOL Multiphysics</li><li>Abaqus</li><li>FreeFem++</li></ul>
+        </div>
+        <div>
+          <h4>CAD</h4>
+          <ul><li>SolidWorks</li><li>CATIA V5 / 3DEXPERIENCE</li></ul>
+        </div>
+        <div>
+          <h4>Programming</h4>
+          <ul><li>Python</li><li>MATLAB</li><li>Arduino (C/C++)</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <h2>Education</h2>
+      <ul class="timeline">
+        <li><span class="when">Current</span><span><strong>Master MSME</strong> (Modelling and Simulation in Mechanics and Energy), Université Paul Sabatier Toulouse III</span></li>
+        <li><span class="when">Earlier</span><span><strong>Master 1 in Mechanical Manufacturing</strong>, Université de Constantine 1</span></li>
+        <li><span class="when">Earlier</span><span><strong>Licence in Mechanical Production and Industrialisation</strong>, Université de Constantine 1</span></li>
+      </ul>
+      <p class="lead" style="margin-top:20px">Languages: French (C1, TCF), English (C2, EF SET).</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p class="lead">Open to internship opportunities in thermal engineering and numerical simulation, in Toulouse or anywhere in Europe.</p>
+      <div class="buttons">
+        <a class="btn primary" href="https://www.linkedin.com/in/mohamed-rayan-aissat-56880b337" target="_blank" rel="noopener">Message me on LinkedIn</a>
+        <a class="btn" href="cv.pdf">Download CV</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2026 Mohamed Rayan Aissat · Toulouse, France
+</footer>
+
+</body>
+</html>
