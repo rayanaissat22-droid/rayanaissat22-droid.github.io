@@ -4,202 +4,247 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mohamed Rayan Aissat · Thermal engineering and numerical simulation</title>
-<meta name="description" content="Portfolio of Mohamed Rayan Aissat, M2 MSME student at Université Paul Sabatier Toulouse III: heat exchangers, turbulence modelling and mechanical design.">
+<meta name="description" content="Portfolio of Mohamed Rayan Aissat, M2 MSME student at Université Paul Sabatier Toulouse III: heat transfer, CFD and mechanical design projects.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #ffffff;
-    --steel: #eef2f5;
-    --steel-2: #d7dfe6;
+    --mist: #f1f4f6;
+    --line: #dde3e8;
     --ink: #13212e;
-    --ink-2: #4a5967;
+    --ink-2: #4f5d6b;
     --blue: #2b5c8a;
     --hot: #e0531f;
-    --wrap: 1120px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-  body {
-    font-family: "Archivo", "Segoe UI", system-ui, sans-serif;
-    font-stretch: 100%;
-    color: var(--ink); background: var(--paper);
-    font-size: 17px; line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-  }
+  body { font-family: "Archivo", "Segoe UI", system-ui, sans-serif; color: var(--ink); background: var(--paper); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
   a { color: var(--blue); text-underline-offset: 3px; }
-  a:focus-visible, button:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+  a:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
   img { display: block; max-width: 100%; height: auto; }
-  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 32px; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
 
-  /* ---------- Top bar ---------- */
-  .top { position: absolute; inset: 0 0 auto 0; z-index: 2; }
-  .top .wrap { display: flex; justify-content: space-between; align-items: center; height: 72px; }
-  .top .mark { font-weight: 800; font-stretch: 125%; letter-spacing: .02em; color: var(--ink); text-decoration: none; }
-  .top nav { display: flex; gap: 28px; font-size: 15px; }
-  .top nav a { color: var(--ink-2); text-decoration: none; }
-  .top nav a:hover { color: var(--ink); }
+  /* top bar */
+  .bar { border-bottom: 1px solid var(--line); }
+  .bar .wrap { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+  .mark { font-weight: 800; font-stretch: 125%; color: var(--ink); text-decoration: none; letter-spacing: .01em; }
+  .bar nav { display: flex; gap: 26px; font-size: 15px; }
+  .bar nav a { color: var(--ink-2); text-decoration: none; }
+  .bar nav a:hover { color: var(--ink); }
 
-  /* ---------- Hero ---------- */
-  .hero { position: relative; min-height: 640px; display: flex; align-items: flex-end; overflow: hidden; background: var(--steel); }
-  #field { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; }
-  .hero .wrap { position: relative; z-index: 1; width: 100%; padding-top: 120px; padding-bottom: 64px; pointer-events: none; }
-  .hero .wrap a, .hero .wrap button { pointer-events: auto; }
-  .hero h1 {
-    font-weight: 900; font-stretch: 125%;
-    font-size: clamp(44px, 7.4vw, 96px); line-height: .92; letter-spacing: -.015em;
-    max-width: 11ch;
-  }
-  .hero .role { margin-top: 22px; font-size: 21px; line-height: 1.45; max-width: 34em; color: var(--ink); }
-  .hero .row { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-  .btn {
-    display: inline-block; padding: 12px 20px; font: inherit; font-size: 16px; font-weight: 600;
-    text-decoration: none; border: 2px solid var(--ink); color: var(--ink); background: rgba(255,255,255,.75);
-  }
+  /* intro */
+  .intro { padding-top: 72px; padding-bottom: 56px; display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; align-items: end; }
+  .intro h1 { font-weight: 900; font-stretch: 125%; font-size: clamp(44px, 6.6vw, 88px); line-height: .92; letter-spacing: -.015em; }
+  .intro .role { margin-top: 22px; font-size: 20px; max-width: 30em; }
+  .side { border-left: 3px solid var(--hot); padding-left: 22px; }
+  .side p { color: var(--ink-2); font-size: 16px; }
+  .side p strong { color: var(--ink); font-weight: 700; }
+  .btns { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 11px 18px; font-size: 15.5px; font-weight: 600; text-decoration: none; border: 2px solid var(--ink); color: var(--ink); }
   .btn.solid { background: var(--ink); color: #fff; }
   .btn:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
-  .avail { font-size: 15px; color: var(--ink-2); margin-left: 6px; }
-  .field-note {
-    position: absolute; right: 32px; bottom: 24px; z-index: 1; max-width: 300px;
-    font-size: 13px; line-height: 1.45; color: var(--ink-2); text-align: right;
-  }
-  .scale { display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-bottom: 6px; }
-  .scale i { display: block; width: 120px; height: 6px; background: linear-gradient(90deg, #eef2f5, #f6c79b, #e0531f, #8f1d0c); }
 
-  /* ---------- Sections ---------- */
-  section { padding: 104px 0; }
-  section + section { border-top: 1px solid var(--steel-2); }
-  .sec-title { font-weight: 800; font-stretch: 112%; font-size: 34px; line-height: 1.1; margin-bottom: 12px; }
-  .sec-intro { color: var(--ink-2); max-width: 36em; margin-bottom: 64px; }
+  /* project grid */
+  #projects { padding: 8px 0 96px; }
+  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 44px 28px; }
+  .card { grid-column: span 4; text-decoration: none; color: var(--ink); display: flex; flex-direction: column; }
+  .card.big { grid-column: span 6; }
+  .cover { display: block; overflow: hidden; border: 1px solid var(--line); background: var(--mist); }
+  .cover img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transition: transform .5s ease; }
+  .card:hover .cover img { transform: scale(1.03); }
+  @media (prefers-reduced-motion: reduce) { .cover img { transition: none; } .card:hover .cover img { transform: none; } }
+  .cat { margin-top: 16px; font-size: 14px; color: var(--hot); font-weight: 600; }
+  .ttl { margin-top: 4px; font-weight: 800; font-stretch: 108%; font-size: 22px; line-height: 1.2; }
+  .card.big .ttl { font-size: 26px; }
+  .card:hover .ttl { color: var(--blue); }
+  .line { margin-top: 8px; color: var(--ink-2); font-size: 16px; max-width: 34em; }
+  .tl { margin-top: 10px; font-size: 14px; color: var(--ink-2); }
 
-  /* ---------- Case study ---------- */
-  .case { display: grid; grid-template-columns: 300px 1fr; gap: 56px; }
-  .case + .case { margin-top: 96px; padding-top: 96px; border-top: 1px solid var(--steel-2); }
-  .case-side .ctx { font-size: 15px; color: var(--ink-2); }
-  .case-side h3 { font-weight: 800; font-stretch: 108%; font-size: 26px; line-height: 1.15; margin: 10px 0 18px; }
-  .tools { list-style: none; font-size: 15px; color: var(--ink-2); border-top: 1px solid var(--steel-2); }
-  .tools li { padding: 7px 0; border-bottom: 1px solid var(--steel-2); }
-  .case-main > p { max-width: 38em; }
-  .case-main > p + p { margin-top: 14px; }
+  /* about strip */
+  .about { background: var(--mist); padding: 80px 0; }
+  .about .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+  .about h2 { font-size: 17px; font-weight: 700; padding-bottom: 10px; border-bottom: 2px solid var(--ink); margin-bottom: 4px; }
+  .about ul { list-style: none; }
+  .about li { padding: 8px 0; border-bottom: 1px solid var(--line); color: var(--ink-2); font-size: 15.5px; }
+  .about li strong { display: block; color: var(--ink); font-weight: 600; }
 
-  .result {
-    margin: 40px 0 8px; padding-left: 22px; border-left: 4px solid var(--hot);
-    font-size: 24px; line-height: 1.35; font-weight: 500; max-width: 26em;
-  }
-  .result b { font-weight: 800; }
-  .result small { display: block; font-size: 15px; font-weight: 400; color: var(--ink-2); margin-top: 6px; }
-
-  .chart { margin: 40px 0 0; }
-  .chart img { width: 100%; }
-  figcaption { font-size: 14px; color: var(--ink-2); margin-top: 10px; }
-
-  .steps { list-style: none; counter-reset: s; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
-  .steps li { counter-increment: s; font-size: 15.5px; color: var(--ink-2); }
-  .steps li::before { content: counter(s); display: block; font-weight: 900; font-stretch: 125%; font-size: 30px; color: var(--steel-2); line-height: 1; margin-bottom: 8px; }
-  .steps strong { display: block; color: var(--ink); font-size: 17px; margin-bottom: 4px; }
-
-  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
-  .gallery a { display: block; background: var(--steel); }
-  .gallery img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
-
-  .repo { margin-top: 22px; font-weight: 600; }
-  .steps-4 { grid-template-columns: repeat(4, 1fr); gap: 24px; }
-  .studies { margin-top: 56px; display: grid; gap: 36px; }
-  .study { display: grid; grid-template-columns: 1fr 1.1fr; gap: 28px; align-items: start; }
-  .study img { width: 100%; aspect-ratio: 16 / 10; object-fit: contain; background: #fff; border: 1px solid var(--steel-2); }
-  .study h4 { font-size: 19px; font-weight: 700; margin-bottom: 6px; }
-  .study p { font-size: 15.5px; color: var(--ink-2); }
-  .study .note { margin-top: 8px; font-size: 14px; }
-  @media (max-width: 900px) { .study { grid-template-columns: 1fr; gap: 12px; } }
-  .soon { margin-top: 28px; font-size: 15px; color: var(--ink-2); }
-
-  /* ---------- Skills ---------- */
-  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-  .skills h3 { font-size: 17px; font-weight: 700; padding-bottom: 10px; border-bottom: 2px solid var(--ink); margin-bottom: 6px; }
-  .skills ul { list-style: none; }
-  .skills li { padding: 8px 0; border-bottom: 1px solid var(--steel-2); color: var(--ink-2); }
-
-  /* ---------- Education ---------- */
-  .edu { list-style: none; max-width: 760px; }
-  .edu li { display: grid; grid-template-columns: 180px 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--steel-2); }
-  .edu .where { color: var(--ink-2); font-size: 15px; }
-  .edu strong { display: block; }
-  .langs { margin-top: 28px; color: var(--ink-2); }
-
-  /* ---------- Contact ---------- */
-  .contact { background: var(--ink); color: #fff; border-top: none; }
-  .contact .sec-title { font-size: clamp(32px, 4.6vw, 56px); font-stretch: 125%; font-weight: 900; max-width: 16ch; }
-  .contact p { color: #b8c4cf; max-width: 34em; margin: 18px 0 36px; }
-  .contact .btn { border-color: #fff; color: #fff; background: transparent; }
+  .contact { background: var(--ink); color: #fff; padding: 88px 0 40px; }
+  .contact h2 { font-weight: 900; font-stretch: 125%; font-size: clamp(30px, 4.4vw, 54px); line-height: 1.02; max-width: 16ch; }
+  .contact p { color: #b8c4cf; max-width: 34em; margin: 18px 0 30px; }
+  .contact .btn { border-color: #fff; color: #fff; }
   .contact .btn.solid { background: #fff; color: var(--ink); }
   .contact .btn:hover { background: var(--hot); border-color: var(--hot); color: #fff; }
   .contact a:focus-visible { outline-color: #fff; }
+  .foot { margin-top: 64px; font-size: 14px; color: #7f8e9b; }
 
-  footer { background: var(--ink); color: #7f8e9b; font-size: 14px; padding: 0 0 40px; }
+  /* project pages */
+  .page { padding: 40px 0 96px; }
+  .back { display: inline-block; font-size: 15px; font-weight: 600; text-decoration: none; margin-bottom: 36px; }
+  .page-head { max-width: 860px; margin-bottom: 40px; }
+  .page-head h1:focus { outline: none; }
+  .page-head .ctx { color: var(--ink-2); font-size: 15px; }
+  .page-head h1 { font-weight: 900; font-stretch: 112%; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.05; margin: 10px 0 18px; }
+  .page-head .tools { color: var(--ink-2); font-size: 15.5px; }
+  .repo { margin-top: 12px; font-weight: 600; }
+  .page-body { max-width: 980px; }
+  .page-body > p { max-width: 40em; font-size: 18px; }
+  .page-body > p + p { margin-top: 14px; }
+  .result { margin: 40px 0 8px; padding-left: 22px; border-left: 4px solid var(--hot); font-size: 25px !important; line-height: 1.35; font-weight: 500; max-width: 28em !important; }
+  .result b { font-weight: 800; }
+  .result small { display: block; font-size: 15.5px; font-weight: 400; color: var(--ink-2); margin-top: 8px; }
+  .chart { margin: 44px 0 0; }
+  .chart img { width: 100%; }
+  figcaption { font-size: 14px; color: var(--ink-2); margin-top: 10px; }
+  .steps { list-style: none; counter-reset: s; display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 52px; }
+  .steps-4 { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .steps li { counter-increment: s; font-size: 15.5px; color: var(--ink-2); }
+  .steps li::before { content: counter(s); display: block; font-weight: 900; font-stretch: 125%; font-size: 30px; color: var(--line); line-height: 1; margin-bottom: 8px; }
+  .steps strong { display: block; color: var(--ink); font-size: 17px; margin-bottom: 4px; }
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
+  .gallery a { display: block; background: var(--mist); }
+  .gallery img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+  .studies { margin-top: 56px; display: grid; gap: 36px; }
+  .study { display: grid; grid-template-columns: 1fr 1.1fr; gap: 28px; align-items: start; }
+  .study img { width: 100%; aspect-ratio: 16 / 10; object-fit: contain; background: #fff; border: 1px solid var(--line); }
+  .study h4 { font-size: 19px; font-weight: 700; margin-bottom: 6px; }
+  .study p { font-size: 15.5px; color: var(--ink-2); }
+  .study .note { margin-top: 8px; font-size: 14px; }
+  .pager { margin-top: 88px; padding-top: 28px; border-top: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .pager a { text-decoration: none; color: var(--ink); font-weight: 700; font-size: 18px; line-height: 1.3; }
+  .pager a:hover { color: var(--blue); }
+  .pager small { display: block; font-weight: 400; font-size: 14px; color: var(--ink-2); margin-bottom: 4px; }
+  .pager .nx { text-align: right; }
 
   @media (max-width: 900px) {
-    .case { grid-template-columns: 1fr; gap: 24px; }
-    .steps, .gallery, .skills { grid-template-columns: 1fr; }
-    .edu li { grid-template-columns: 1fr; gap: 2px; }
-    .top nav { display: none; }
-    .field-note { display: none; }
-    .hero { min-height: 560px; }
-    section { padding: 72px 0; }
+    .wrap { padding: 0 20px; }
+    .bar nav { display: none; }
+    .intro { grid-template-columns: 1fr; gap: 28px; padding-top: 48px; padding-bottom: 40px; }
+    .card, .card.big { grid-column: span 12; }
+    .about .wrap { grid-template-columns: 1fr; }
+    .steps, .steps-4, .gallery { grid-template-columns: 1fr; }
+    .study { grid-template-columns: 1fr; gap: 12px; }
+    .result { font-size: 21px !important; }
   }
 </style>
 </head>
 <body>
 
-<header class="top">
+<header class="bar">
   <div class="wrap">
     <a class="mark" href="#">R. Aissat</a>
     <nav aria-label="Sections">
       <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
+      <a href="#about">Skills and education</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
 
-<main>
-  <div class="hero">
-    <canvas id="field" aria-hidden="true"></canvas>
-    <div class="wrap">
+<main id="home">
+  <div class="wrap intro">
+    <div>
       <h1>Mohamed Rayan Aissat</h1>
-      <p class="role">Engineering student in thermal and numerical simulation, M2 MSME at Université Paul Sabatier Toulouse III. I design heat exchangers, model turbulent flows and write my own solvers.</p>
-      <div class="row">
+      <p class="role">Engineering student in thermal and numerical simulation, M2 MSME at Université Paul Sabatier Toulouse III.</p>
+    </div>
+    <div class="side">
+      <p><strong>Looking for a 4 to 6 month internship from February 2027,</strong> in thermal engineering or numerical simulation.</p>
+      <div class="btns">
         <a class="btn solid" href="cv.pdf">Download my CV</a>
         <a class="btn" href="https://www.linkedin.com/in/mohamed-rayan-aissat-56880b337" target="_blank" rel="noopener">LinkedIn</a>
-        <span class="avail">Available for a 4 to 6 month internship from February 2027</span>
       </div>
-    </div>
-    <div class="field-note">
-      <div class="scale"><span>cold</span><i></i><span>hot</span></div>
-      2D heat conduction, solved live in your browser with an explicit finite-difference scheme. Move your cursor to add heat.
     </div>
   </div>
 
-  <section id="projects">
-    <div class="wrap">
-      <h2 class="sec-title">Projects</h2>
-      <p class="sec-intro">Heat exchangers, heat conduction, turbulent and compressible flows, and mechanical prototyping.</p>
+  <section id="projects" aria-label="Projects">
+    <div class="wrap grid">
+      <a class="card big" href="#gss">
+        <span class="cover"><img src="images/covers/gss.jpg" alt="" loading="lazy" width="1200" height="800"></span>
+        <span class="cat">Heat transfer</span>
+        <span class="ttl">Cooling the air intake of an MS5002B gas turbine</span>
+        <span class="line">Finned-tube heat exchanger for a gas turbine air intake. Estimated July efficiency rises from 20.5&nbsp;% to 27.0&nbsp;%.</span>
+        <span class="tl">SolidWorks, Flow Simulation</span>
+      </a>
+      <a class="card big" href="#bar">
+        <span class="cover"><img src="images/covers/bar.jpg" alt="" loading="lazy" width="1200" height="800"></span>
+        <span class="cat">Heat transfer</span>
+        <span class="ttl">Heat conduction in a bar with oscillating end temperatures</span>
+        <span class="line">1D transient conduction solver, explicit and implicit, checked against an exact solution: convergence order 2.00.</span>
+        <span class="tl">Python</span>
+      </a>
+      <a class="card small" href="#comsol">
+        <span class="cover"><img src="images/covers/comsol.jpg" alt="" loading="lazy" width="1200" height="800"></span>
+        <span class="cat">Heat transfer</span>
+        <span class="ttl">Heat transfer studies in COMSOL</span>
+        <span class="line">Heat exchanger, solar pond and Canadian well. Best exchanger trade-off found at Re ≈ 200.</span>
+        <span class="tl">COMSOL</span>
+      </a>
+      <a class="card small" href="#openfoam">
+        <span class="cover"><img src="images/covers/openfoam.jpg" alt="" loading="lazy" width="1200" height="800"></span>
+        <span class="cat">Fluid dynamics</span>
+        <span class="ttl">Lid-driven cavity in OpenFOAM: mesh and scheme study</span>
+        <span class="line">Mesh and scheme study against Ghia et al. Error of 0.19&nbsp;% of the lid speed on the finest mesh.</span>
+        <span class="tl">OpenFOAM, ParaView</span>
+      </a>
+      <a class="card small" href="#duct">
+        <span class="cover"><img src="images/covers/duct.jpg" alt="" loading="lazy" width="1200" height="800"></span>
+        <span class="cat">Fluid dynamics</span>
+        <span class="ttl">Turbulent flow in a smooth rectangular duct</span>
+        <span class="line">RANS mixing-length solver written from scratch. Within 5&nbsp;% of Dean’s correlation above Re ≈ 14&nbsp;000.</span>
+        <span class="tl">Python</span>
+      </a>
+      <a class="card big" href="#shear">
+        <span class="cover"><img src="images/covers/shear.jpg" alt="" loading="lazy" width="1200" height="800"></span>
+        <span class="cat">Fluid dynamics</span>
+        <span class="ttl">Laminar mixing layer between a cold and a hot air stream</span>
+        <span class="line">Similarity solutions by shooting and Newton. A hot slow stream raises friction by 35 to 46&nbsp;%.</span>
+        <span class="tl">Python</span>
+      </a>
+      <a class="card big" href="#solar">
+        <span class="cover"><img src="images/covers/solar.jpg" alt="" loading="lazy" width="1200" height="800"></span>
+        <span class="cat">Design and build</span>
+        <span class="ttl">Two-axis solar tracker</span>
+        <span class="line">Designed, built and programmed: steel frame, two stepper-driven axes and light-sensor tracking.</span>
+        <span class="tl">SolidWorks, Arduino</span>
+      </a>
+    </div>
+  </section>
 
-      <!-- GSS heat exchanger -->
-      <article class="case">
-        <div class="case-side">
-          <p class="ctx">Licence thesis based on my internship at GSS (SONATRACH and SINOPEC), 2024</p>
-          <h3>Cooling the air intake of an MS5002B gas turbine</h3>
-          <ul class="tools">
-            <li>SolidWorks</li>
-            <li>SolidWorks Flow Simulation</li>
-            <li>Heat exchanger design</li>
-            <li>Gas turbine performance</li>
-          </ul>
-        </div>
-        <div class="case-main">
+  <section id="about" class="about" aria-label="Skills and education">
+    <div class="wrap">
+      <div>
+        <h2>Simulation</h2>
+        <ul><li>ANSYS Fluent</li><li>OpenFOAM and ParaView</li><li>COMSOL Multiphysics</li><li>Abaqus</li><li>FreeFem++</li><li>SolidWorks Flow Simulation</li></ul>
+      </div>
+      <div>
+        <h2>CAD and programming</h2>
+        <ul><li>SolidWorks</li><li>CATIA V5 and 3DEXPERIENCE</li><li>Python (NumPy, SciPy, pandas, Matplotlib)</li><li>MATLAB</li><li>Arduino</li></ul>
+      </div>
+      <div>
+        <h2>Education</h2>
+        <ul>
+          <li><strong>Master MSME, modelling and simulation in mechanics and energy</strong>Université Paul Sabatier Toulouse III, now</li>
+          <li><strong>Master 1 in Mechanical Manufacturing</strong>Université de Constantine 1</li>
+          <li><strong>Licence in Mechanical Production and Industrialisation</strong>Université de Constantine 1, 2024</li>
+          <li>French C1 (TCF), English C2 (EF SET)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <article class="page" id="gss" hidden>
+    <div class="wrap">
+      <a class="back" href="#projects">← All projects</a>
+      <header class="page-head">
+        <p class="ctx">Licence thesis based on my internship at GSS (SONATRACH and SINOPEC), 2024</p>
+        <h1>Cooling the air intake of an MS5002B gas turbine</h1>
+        <p class="tools">SolidWorks, SolidWorks Flow Simulation, Heat exchanger design, Gas turbine performance</p>
+        
+      </header>
+      <div class="page-body">
           <p>A gas turbine loses efficiency when the air it takes in is hot. The MS5002B is rated at 28&nbsp;% efficiency at 15 °C, but at the Zarzaitine oil field the air reaches 41 °C in summer.</p>
           <p>I designed a finned-tube heat exchanger that cools the intake air with chilled water before it reaches the compressor, then simulated it to choose the number of fins.</p>
 
@@ -232,22 +277,19 @@
             </figure>
           </div>
         </div>
-      </article>
-
-      <!-- Heat conduction bar -->
-      <article class="case">
-        <div class="case-side">
-          <p class="ctx">M2 MSME modelling project, Université Paul Sabatier, 2026</p>
-          <h3>Heat conduction in a bar with oscillating end temperatures</h3>
-          <ul class="tools">
-            <li>Python, NumPy, pandas, Matplotlib</li>
-            <li>Finite differences, explicit and implicit</li>
-            <li>Exact periodic solution</li>
-            <li>YAML parameter files</li>
-          </ul>
-          <p class="repo"><a href="https://github.com/rayanaissat22-droid/heat-conduction-bar" target="_blank" rel="noopener">See the code on GitHub</a></p>
-        </div>
-        <div class="case-main">
+      <nav class="pager" aria-label="Other projects"><span></span><a class="nx" href="#bar"><small>Next</small>Heat conduction in a bar with oscillating end temperatures</a></nav>
+    </div>
+  </article>
+  <article class="page" id="bar" hidden>
+    <div class="wrap">
+      <a class="back" href="#projects">← All projects</a>
+      <header class="page-head">
+        <p class="ctx">M2 MSME modelling project, Université Paul Sabatier, 2026</p>
+        <h1>Heat conduction in a bar with oscillating end temperatures</h1>
+        <p class="tools">Python, NumPy, pandas, Matplotlib, Finite differences, explicit and implicit, Exact periodic solution, YAML parameter files</p>
+        <p class="repo"><a href="https://github.com/rayanaissat22-droid/heat-conduction-bar" target="_blank" rel="noopener">See the code on GitHub</a></p>
+      </header>
+      <div class="page-body">
           <p>A metal bar, 100&nbsp;mm long and insulated along its side, has each end held at a temperature that oscillates like a sine wave. The question is how far each oscillation travels into the bar, and how much heat flows through it.</p>
           <p>I wrote a 1D transient conduction simulator with an explicit and an implicit scheme, driven by a YAML parameter file. Then I checked it against an exact solution and measured its accuracy.</p>
 
@@ -281,21 +323,19 @@
             </figure>
           </div>
         </div>
-      </article>
-
-      <!-- COMSOL heat transfer labs -->
-      <article class="case">
-        <div class="case-side">
-          <p class="ctx">M2 MSME heat transfer labs, Université Paul Sabatier, 2026</p>
-          <h3>Heat transfer studies in COMSOL</h3>
-          <ul class="tools">
-            <li>COMSOL Multiphysics</li>
-            <li>Heat Transfer in Fluids and Solids</li>
-            <li>Laminar Flow, Non-Isothermal Flow</li>
-            <li>Parametric sweeps, correlations</li>
-          </ul>
-        </div>
-        <div class="case-main">
+      <nav class="pager" aria-label="Other projects"><a href="#gss"><small>Previous</small>Cooling the air intake of an MS5002B gas turbine</a><a class="nx" href="#comsol"><small>Next</small>Heat transfer studies in COMSOL</a></nav>
+    </div>
+  </article>
+  <article class="page" id="comsol" hidden>
+    <div class="wrap">
+      <a class="back" href="#projects">← All projects</a>
+      <header class="page-head">
+        <p class="ctx">M2 MSME heat transfer labs, Université Paul Sabatier, 2026</p>
+        <h1>Heat transfer studies in COMSOL</h1>
+        <p class="tools">COMSOL Multiphysics, Heat Transfer in Fluids and Solids, Laminar Flow, Non-Isothermal Flow, Parametric sweeps, correlations</p>
+        
+      </header>
+      <div class="page-body">
           <p>Three coupled flow and heat transfer problems, each taken from a real system: a tube heat exchanger, a solar pond and a Canadian well. In each one, I set up the physics and boundary conditions, checked the model against theory, and used the results to explain why the system works or not.</p>
 
           <p class="result">For a heated tube in cross-flow, heat transfer gains most over pressure loss at Re ≈ 200: <b>3.2 times</b> the heat transfer of an empty channel, for <b>2.1 times</b> the pressure loss.
@@ -333,22 +373,64 @@
             </div>
           </div>
         </div>
-      </article>
+      <nav class="pager" aria-label="Other projects"><a href="#bar"><small>Previous</small>Heat conduction in a bar with oscillating end temperatures</a><a class="nx" href="#openfoam"><small>Next</small>Lid-driven cavity in OpenFOAM: mesh and scheme study</a></nav>
+    </div>
+  </article>
+  <article class="page" id="openfoam" hidden>
+    <div class="wrap">
+      <a class="back" href="#projects">← All projects</a>
+      <header class="page-head">
+        <p class="ctx">M2 MSME CFD course, Université Paul Sabatier, 2026</p>
+        <h1>Lid-driven cavity in OpenFOAM: mesh and scheme study</h1>
+        <p class="tools">OpenFOAM (blockMesh, icoFoam), ParaView, Python post-processing, Verification against reference data</p>
+        <p class="repo"><a href="https://github.com/rayanaissat22-droid/openfoam-lid-driven-cavity" target="_blank" rel="noopener">See the cases on GitHub</a></p>
+      </header>
+      <div class="page-body">
+          <p>The lid-driven cavity is the classic test case for CFD codes: a square box of fluid whose top wall slides at constant speed. I ran six OpenFOAM simulations to see how much the mesh and the convection scheme change the answer, and compared every case with the reference solution of Ghia et al. (1982).</p>
 
-      <!-- Turbulent duct flow -->
-      <article class="case">
-        <div class="case-side">
-          <p class="ctx">M2 MSME numerical project, Université Paul Sabatier, 2026</p>
-          <h3>Turbulent flow in a smooth rectangular duct</h3>
-          <ul class="tools">
-            <li>Python, NumPy, Matplotlib</li>
-            <li>Unsteady RANS</li>
-            <li>Mixing-length model, Van Driest damping</li>
-            <li>Finite differences, explicit Euler</li>
-          </ul>
-          <p class="repo"><a href="https://github.com/rayanaissat22-droid/turbulent-duct-flow" target="_blank" rel="noopener">See the code on GitHub</a></p>
+          <p class="result">On the 128 × 128 mesh with a second-order scheme, the velocity profiles match the reference to within <b>0.19&nbsp;%</b> of the lid speed (RMS).
+            <small>Refining the mesh near the walls cut the error by 72&nbsp;% with the same number of cells. A first-order upwind scheme made it 18 times worse.</small></p>
+
+          <figure class="chart">
+            <a href="images/cfd-streamlines.png" target="_blank"><img src="images/cfd-streamlines.png" alt="Streamlines in the cavity at Re 1000 and Re 10000. At 10000 the main vortex is more centred and a new corner eddy appears top left." width="1650" height="930" loading="lazy"></a>
+            <figcaption>Streamlines coloured by velocity. At Re = 10&nbsp;000 the main vortex moves to the centre and a third corner eddy appears, as in the reference.</figcaption>
+          </figure>
+
+          <ol class="steps steps-4">
+            <li><strong>Mesh</strong>Four meshes from 32² to 128², plus a 50² mesh graded towards the walls with blockMesh (growth ratio 1.09 between cells).</li>
+            <li><strong>Solve</strong>icoFoam with the PISO algorithm, Re = 1&nbsp;000 for 50 convective times. Convergence checked on the residuals.</li>
+            <li><strong>Compare</strong>Profiles on both centre lines extracted and compared with Ghia et al. in Python. Apparent order close to 2 on u.</li>
+            <li><strong>Push</strong>Re = 10&nbsp;000: vortex centres within 0.003&nbsp;m of the reference. I showed why the mesh and run time were not yet enough for the peak values.</li>
+          </ol>
+
+          <div class="gallery">
+            <figure>
+              <a href="images/cfd-meshes.png" target="_blank"><img src="images/cfd-meshes.png" alt="Regular and wall-refined 50 by 50 meshes" loading="lazy"></a>
+              <figcaption>Same cell count, different spacing</figcaption>
+            </figure>
+            <figure>
+              <a href="images/cfd-errors.png" target="_blank"><img src="images/cfd-errors.png" alt="Bar chart of RMS error for five cases: the refined 50 by 50 mesh is close to the 128 by 128 one, while upwind on 128 by 128 is as bad as the coarsest mesh" loading="lazy"></a>
+              <figcaption>Error against the reference for each case</figcaption>
+            </figure>
+            <figure>
+              <a href="images/cfd-velocity.png" target="_blank"><img src="images/cfd-velocity.png" alt="Velocity magnitude field in the cavity at Re 1000" loading="lazy"></a>
+              <figcaption>Velocity magnitude at Re = 1&nbsp;000 (m/s)</figcaption>
+            </figure>
+          </div>
         </div>
-        <div class="case-main">
+      <nav class="pager" aria-label="Other projects"><a href="#comsol"><small>Previous</small>Heat transfer studies in COMSOL</a><a class="nx" href="#duct"><small>Next</small>Turbulent flow in a smooth rectangular duct</a></nav>
+    </div>
+  </article>
+  <article class="page" id="duct" hidden>
+    <div class="wrap">
+      <a class="back" href="#projects">← All projects</a>
+      <header class="page-head">
+        <p class="ctx">M2 MSME numerical project, Université Paul Sabatier, 2026</p>
+        <h1>Turbulent flow in a smooth rectangular duct</h1>
+        <p class="tools">Python, NumPy, Matplotlib, Unsteady RANS, Mixing-length model, Van Driest damping, Finite differences, explicit Euler</p>
+        <p class="repo"><a href="https://github.com/rayanaissat22-droid/turbulent-duct-flow" target="_blank" rel="noopener">See the code on GitHub</a></p>
+      </header>
+      <div class="page-body">
           <p>The goal is to predict the mean velocity profile of water flowing in a wide, flat duct, driven by a pressure gradient. Because the duct is much wider than it is high, the flow reduces to one velocity u(z) across the height.</p>
           <p>I wrote the solver from scratch in Python, validated it on laminar flow, then added a zero-equation turbulence model and compared two ways of limiting the mixing length in the core of the channel.</p>
 
@@ -382,22 +464,19 @@
             </figure>
           </div>
         </div>
-      </article>
-
-      <!-- Compressible shear layer -->
-      <article class="case">
-        <div class="case-side">
-          <p class="ctx">M2 MSME fluid mechanics project (SAÉ), Université Paul Sabatier, 2026</p>
-          <h3>Laminar mixing layer between a cold and a hot air stream</h3>
-          <ul class="tools">
-            <li>Python, NumPy, Matplotlib</li>
-            <li>Similarity solutions</li>
-            <li>Shooting method, RK4, Newton</li>
-            <li>Howarth–Dorodnitsyn transformation</li>
-          </ul>
-          <p class="repo"><a href="https://github.com/rayanaissat22-droid/compressible-shear-layer" target="_blank" rel="noopener">See the code on GitHub</a></p>
-        </div>
-        <div class="case-main">
+      <nav class="pager" aria-label="Other projects"><a href="#openfoam"><small>Previous</small>Lid-driven cavity in OpenFOAM: mesh and scheme study</a><a class="nx" href="#shear"><small>Next</small>Laminar mixing layer between a cold and a hot air stream</a></nav>
+    </div>
+  </article>
+  <article class="page" id="shear" hidden>
+    <div class="wrap">
+      <a class="back" href="#projects">← All projects</a>
+      <header class="page-head">
+        <p class="ctx">M2 MSME fluid mechanics project (SAÉ), Université Paul Sabatier, 2026</p>
+        <h1>Laminar mixing layer between a cold and a hot air stream</h1>
+        <p class="tools">Python, NumPy, Matplotlib, Similarity solutions, Shooting method, RK4, Newton, Howarth–Dorodnitsyn transformation</p>
+        <p class="repo"><a href="https://github.com/rayanaissat22-droid/compressible-shear-layer" target="_blank" rel="noopener">See the code on GitHub</a></p>
+      </header>
+      <div class="page-body">
           <p>Two parallel air streams meet behind a splitter plate: a fast one at 300&nbsp;K above, a slower one at 600&nbsp;K below. Viscosity and conduction smooth out the jump in velocity and temperature, and a mixing layer grows downstream. Because the hot gas is half as dense, the layer is not symmetric.</p>
           <p>I derived the similarity equations, wrote a Python solver for them, validated it three ways, and studied how the speed ratio and the hot-stream temperature change friction and heat transfer.</p>
 
@@ -431,69 +510,19 @@
             </figure>
           </div>
         </div>
-      </article>
-
-      <!-- OpenFOAM lid-driven cavity -->
-      <article class="case">
-        <div class="case-side">
-          <p class="ctx">M2 MSME CFD course, Université Paul Sabatier, 2026</p>
-          <h3>Lid-driven cavity in OpenFOAM: mesh and scheme study</h3>
-          <ul class="tools">
-            <li>OpenFOAM (blockMesh, icoFoam)</li>
-            <li>ParaView</li>
-            <li>Python post-processing</li>
-            <li>Verification against reference data</li>
-          </ul>
-        </div>
-        <div class="case-main">
-          <p>The lid-driven cavity is the classic test case for CFD codes: a square box of fluid whose top wall slides at constant speed. I ran six OpenFOAM simulations to see how much the mesh and the convection scheme change the answer, and compared every case with the reference solution of Ghia et al. (1982).</p>
-
-          <p class="result">On the 128 × 128 mesh with a second-order scheme, the velocity profiles match the reference to within <b>0.19&nbsp;%</b> of the lid speed (RMS).
-            <small>Refining the mesh near the walls cut the error by 72&nbsp;% with the same number of cells. A first-order upwind scheme made it 18 times worse.</small></p>
-
-          <figure class="chart">
-            <a href="images/cfd-streamlines.png" target="_blank"><img src="images/cfd-streamlines.png" alt="Streamlines in the cavity at Re 1000 and Re 10000. At 10000 the main vortex is more centred and a new corner eddy appears top left." width="1650" height="930" loading="lazy"></a>
-            <figcaption>Streamlines coloured by velocity. At Re = 10&nbsp;000 the main vortex moves to the centre and a third corner eddy appears, as in the reference.</figcaption>
-          </figure>
-
-          <ol class="steps steps-4">
-            <li><strong>Mesh</strong>Four meshes from 32² to 128², plus a 50² mesh graded towards the walls with blockMesh (growth ratio 1.09 between cells).</li>
-            <li><strong>Solve</strong>icoFoam with the PISO algorithm, Re = 1&nbsp;000 for 50 convective times. Convergence checked on the residuals.</li>
-            <li><strong>Compare</strong>Profiles on both centre lines extracted and compared with Ghia et al. in Python. Apparent order close to 2 on u.</li>
-            <li><strong>Push</strong>Re = 10&nbsp;000: vortex centres within 0.003&nbsp;m of the reference. I showed why the mesh and run time were not yet enough for the peak values.</li>
-          </ol>
-
-          <div class="gallery">
-            <figure>
-              <a href="images/cfd-meshes.png" target="_blank"><img src="images/cfd-meshes.png" alt="Regular and wall-refined 50 by 50 meshes" loading="lazy"></a>
-              <figcaption>Same cell count, different spacing</figcaption>
-            </figure>
-            <figure>
-              <a href="images/cfd-errors.png" target="_blank"><img src="images/cfd-errors.png" alt="Bar chart of RMS error for five cases: the refined 50 by 50 mesh is close to the 128 by 128 one, while upwind on 128 by 128 is as bad as the coarsest mesh" loading="lazy"></a>
-              <figcaption>Error against the reference for each case</figcaption>
-            </figure>
-            <figure>
-              <a href="images/cfd-velocity.png" target="_blank"><img src="images/cfd-velocity.png" alt="Velocity magnitude field in the cavity at Re 1000" loading="lazy"></a>
-              <figcaption>Velocity magnitude at Re = 1&nbsp;000 (m/s)</figcaption>
-            </figure>
-          </div>
-        </div>
-      </article>
-
-      <!-- Solar tracker -->
-      <article class="case">
-        <div class="case-side">
-          <p class="ctx">Personal project</p>
-          <h3>Two-axis solar tracker</h3>
-          <ul class="tools">
-            <li>SolidWorks</li>
-            <li>Arduino Uno, C++</li>
-            <li>NEMA 23 steppers, TB6600 drivers</li>
-            <li>Light sensors (LDR)</li>
-          </ul>
-          <p class="repo"><a href="https://github.com/rayanaissat22-droid/solar-tracker" target="_blank" rel="noopener">See the code on GitHub</a></p>
-        </div>
-        <div class="case-main">
+      <nav class="pager" aria-label="Other projects"><a href="#duct"><small>Previous</small>Turbulent flow in a smooth rectangular duct</a><a class="nx" href="#solar"><small>Next</small>Two-axis solar tracker</a></nav>
+    </div>
+  </article>
+  <article class="page" id="solar" hidden>
+    <div class="wrap">
+      <a class="back" href="#projects">← All projects</a>
+      <header class="page-head">
+        <p class="ctx">Personal project</p>
+        <h1>Two-axis solar tracker</h1>
+        <p class="tools">SolidWorks, Arduino Uno, C++, NEMA 23 steppers, TB6600 drivers, Light sensors (LDR)</p>
+        <p class="repo"><a href="https://github.com/rayanaissat22-droid/solar-tracker" target="_blank" rel="noopener">See the code on GitHub</a></p>
+      </header>
+      <div class="page-body">
           <p>A fixed solar panel only faces the sun for part of the day. I designed and built a tracker that turns the panel on two axes, azimuth and elevation, to keep it pointed at the sun.</p>
           <p>I modelled it in SolidWorks, built the steel frame, the two rotation axes and the control box, and programmed the Arduino.</p>
 
@@ -525,137 +554,43 @@
             </figure>
           </div>
         </div>
-      </article>
+      <nav class="pager" aria-label="Other projects"><a href="#shear"><small>Previous</small>Laminar mixing layer between a cold and a hot air stream</a><span></span></nav>
     </div>
-  </section>
+  </article>
 
-  <section id="skills">
-    <div class="wrap">
-      <h2 class="sec-title">Skills</h2>
-      <p class="sec-intro">The tools I use to design, simulate and analyse.</p>
-      <div class="skills">
-        <div>
-          <h3>Simulation</h3>
-          <ul><li>ANSYS Fluent</li><li>OpenFOAM and ParaView</li><li>COMSOL Multiphysics</li><li>Abaqus</li><li>FreeFem++</li><li>SolidWorks Flow Simulation</li></ul>
-        </div>
-        <div>
-          <h3>CAD</h3>
-          <ul><li>SolidWorks</li><li>CATIA V5 and 3DEXPERIENCE</li></ul>
-        </div>
-        <div>
-          <h3>Programming</h3>
-          <ul><li>Python (NumPy, SciPy, pandas, Matplotlib)</li><li>MATLAB</li><li>Arduino</li></ul>
-        </div>
-      </div>
+<section id="contact" class="contact" aria-label="Contact">
+  <div class="wrap">
+    <h2>Looking for an internship from February 2027</h2>
+    <p>Four to six months in thermal engineering or numerical simulation, in Toulouse or elsewhere in Europe.</p>
+    <div class="btns">
+      <a class="btn solid" href="https://www.linkedin.com/in/mohamed-rayan-aissat-56880b337" target="_blank" rel="noopener">Message me on LinkedIn</a>
+      <a class="btn" href="cv.pdf">Download my CV</a>
     </div>
-  </section>
-
-  <section id="education">
-    <div class="wrap">
-      <h2 class="sec-title">Education</h2>
-      <p class="sec-intro">From mechanical manufacturing in Constantine to modelling and simulation in Toulouse.</p>
-      <ul class="edu">
-        <li><span class="where">Toulouse, now</span><span><strong>Master in Modelling and Simulation in Mechanics and Energy (MSME)</strong>Université Paul Sabatier Toulouse III</span></li>
-        <li><span class="where">Constantine</span><span><strong>Master 1 in Mechanical Manufacturing</strong>Université de Constantine 1</span></li>
-        <li><span class="where">Constantine, 2024</span><span><strong>Licence in Mechanical Production and Industrialisation</strong>Université de Constantine 1</span></li>
-      </ul>
-      <p class="langs">French C1 (TCF) and English C2 (EF SET).</p>
-    </div>
-  </section>
-
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <h2 class="sec-title">Looking for an internship from February 2027</h2>
-      <p>Four to six months in thermal engineering or numerical simulation, in Toulouse or elsewhere in Europe.</p>
-      <div class="row" style="display:flex;gap:12px;flex-wrap:wrap">
-        <a class="btn solid" href="https://www.linkedin.com/in/mohamed-rayan-aissat-56880b337" target="_blank" rel="noopener">Message me on LinkedIn</a>
-        <a class="btn" href="cv.pdf">Download my CV</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer><div class="wrap">Mohamed Rayan Aissat, Toulouse, 2026</div></footer>
+    <p class="foot">Mohamed Rayan Aissat, Toulouse, 2026</p>
+  </div>
+</section>
 
 <script>
-/* 2D transient heat conduction, explicit FTCS scheme on a coarse grid.
-   Edges are held cold (Dirichlet T = 0). Heat sources: the cursor, plus two slow
-   drifting sources so the field is never empty. Drawn with a thermal colour map. */
 (function () {
-  const cv = document.getElementById('field');
-  const ctx = cv.getContext('2d');
-  const NX = 160; let NY = 90;
-  let T = new Float32Array(NX * NY), Tn = new Float32Array(NX * NY);
-  const alpha = 0.22;            // r = alpha*dt/dx^2, must stay below 0.25 for stability
-  let img = ctx.createImageData(NX, NY);
-  const off = document.createElement('canvas'); off.width = NX; off.height = NY;
-  const octx = off.getContext('2d');
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let mouse = null;
-
-  // colour map: steel (cold) -> pale amber -> hot orange -> dark red
-  const stops = [[0,[238,242,245]],[0.35,[246,199,155]],[0.7,[224,83,31]],[1,[143,29,12]]];
-  const lut = new Uint8ClampedArray(256 * 3);
-  for (let i = 0; i < 256; i++) {
-    const t = i / 255; let k = 0;
-    while (k < stops.length - 2 && t > stops[k + 1][0]) k++;
-    const [t0, c0] = stops[k], [t1, c1] = stops[k + 1], f = (t - t0) / (t1 - t0);
-    for (let c = 0; c < 3; c++) lut[i * 3 + c] = c0[c] + (c1[c] - c0[c]) * f;
-  }
-
-  function resize() {
-    const r = cv.getBoundingClientRect();
-    cv.width = r.width; cv.height = r.height;
-    // keep grid cells square so the heat spreads as circles on any screen
-    const ny = Math.max(40, Math.round(NX * r.height / r.width));
-    if (ny !== NY) {
-      NY = ny; T = new Float32Array(NX * NY); Tn = new Float32Array(NX * NY);
-      img = ctx.createImageData(NX, NY); off.width = NX; off.height = NY;
-      for (let i = 0; i < 1200; i++) step(i * 16);
+  const ids = ["gss", "bar", "comsol", "openfoam", "duct", "shear", "solar"];
+  const home = document.getElementById('home');
+  function route() {
+    const h = location.hash.slice(1);
+    const isPage = ids.includes(h);
+    home.hidden = isPage;
+    ids.forEach(id => { document.getElementById(id).hidden = id !== h; });
+    if (isPage) {
+      window.scrollTo(0, 0); requestAnimationFrame(() => window.scrollTo(0, 0));
+      const t = document.querySelector('#' + h + ' h1');
+      document.title = t.textContent + ' · Mohamed Rayan Aissat';
+      t.setAttribute('tabindex', '-1'); t.focus({ preventScroll: true });
+    } else {
+      document.title = 'Mohamed Rayan Aissat · Thermal engineering and numerical simulation';
+      if (h) { const el = document.getElementById(h); if (el) el.scrollIntoView(); }
     }
   }
-  function heat(cx, cy, q, rad) {
-    for (let j = -rad; j <= rad; j++) for (let i = -rad; i <= rad; i++) {
-      const x = Math.round(cx) + i, y = Math.round(cy) + j;
-      if (x < 1 || y < 1 || x >= NX - 1 || y >= NY - 1) continue;
-      const d = (i * i + j * j) / (rad * rad); if (d > 1) continue;
-      const k = y * NX + x; T[k] = Math.min(1, T[k] + q * (1 - d));
-    }
-  }
-  function step(t) {
-    // two drifting sources in the right half of the hero, away from the text
-    heat(NX * (0.72 + 0.12 * Math.sin(t * 0.00031)), NY * (0.32 + 0.14 * Math.cos(t * 0.00043)), 0.022, 5);
-    heat(NX * (0.86 + 0.06 * Math.cos(t * 0.00027)), NY * (0.62 + 0.18 * Math.sin(t * 0.00037)), 0.018, 4);
-    if (mouse) heat(mouse.x, mouse.y, 0.07, 5);
-    for (let y = 1; y < NY - 1; y++) for (let x = 1; x < NX - 1; x++) {
-      const k = y * NX + x;
-      Tn[k] = T[k] + alpha * (T[k - 1] + T[k + 1] + T[k - NX] + T[k + NX] - 4 * T[k]) - 0.002 * T[k];
-    }
-    const s = T; T = Tn; Tn = s;
-  }
-  function draw() {
-    const d = img.data;
-    for (let k = 0; k < NX * NY; k++) {
-      const v = Math.max(0, Math.min(255, (T[k] * 255) | 0)) * 3;
-      d[k * 4] = lut[v]; d[k * 4 + 1] = lut[v + 1]; d[k * 4 + 2] = lut[v + 2]; d[k * 4 + 3] = 255;
-    }
-    octx.putImageData(img, 0, 0);
-    ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
-    ctx.drawImage(off, 0, 0, cv.width, cv.height);
-  }
-  function loop(t) { for (let i = 0; i < 4; i++) step(t); draw(); requestAnimationFrame(loop); }
-
-  cv.addEventListener('pointermove', e => {
-    const r = cv.getBoundingClientRect();
-    mouse = { x: (e.clientX - r.left) / r.width * NX, y: (e.clientY - r.top) / r.height * NY };
-  });
-  cv.addEventListener('pointerleave', () => { mouse = null; });
-  window.addEventListener('resize', () => { resize(); draw(); });
-
-  resize();
-  for (let i = 0; i < 1200; i++) step(i * 16);   // warm up so the first frame is not empty
-  draw();
-  if (!reduce) requestAnimationFrame(loop);
+  window.addEventListener('hashchange', route);
+  route();
 })();
 </script>
 </body>
