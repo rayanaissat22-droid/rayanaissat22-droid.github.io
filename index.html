@@ -178,7 +178,7 @@
   <section id="projects">
     <div class="wrap">
       <h2 class="sec-title">Projects</h2>
-      <p class="sec-intro">Heat exchanger design, turbulence modelling and mechanical prototyping.</p>
+      <p class="sec-intro">Heat exchanger design, heat conduction, turbulence modelling and mechanical prototyping.</p>
 
       <!-- GSS heat exchanger -->
       <article class="case">
@@ -222,6 +222,55 @@
             <figure>
               <a href="images/gss-cfd.jpg" target="_blank"><img src="images/gss-cfd.jpg" alt="Flow Simulation result with streamlines coloured by air temperature" loading="lazy"></a>
               <figcaption>Air temperature and streamlines, 40 °C inlet</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+
+      <!-- Heat conduction bar -->
+      <article class="case">
+        <div class="case-side">
+          <p class="ctx">M2 MSME modelling project, Université Paul Sabatier, 2026</p>
+          <h3>Heat conduction in a bar with oscillating end temperatures</h3>
+          <ul class="tools">
+            <li>Python, NumPy, pandas, Matplotlib</li>
+            <li>Finite differences, explicit and implicit</li>
+            <li>Exact periodic solution</li>
+            <li>YAML parameter files</li>
+          </ul>
+          <p class="repo"><a href="https://github.com/rayanaissat22-droid/heat-conduction-bar" target="_blank" rel="noopener">See the code on GitHub</a></p>
+        </div>
+        <div class="case-main">
+          <p>A metal bar, 100&nbsp;mm long and insulated along its side, has each end held at a temperature that oscillates like a sine wave. The question is how far each oscillation travels into the bar, and how much heat flows through it.</p>
+          <p>I wrote a 1D transient conduction simulator with an explicit and an implicit scheme, driven by a YAML parameter file. Then I checked it against an exact solution and measured its accuracy.</p>
+
+          <p class="result">Against the exact solution, the error falls as Δx²: a convergence order of <b>2.00</b>, measured by regression over 20 runs.
+            <small>The mean heat flux, 94.8&nbsp;kW/m² for aluminium, matches λ ΔT / L exactly.</small></p>
+
+          <figure class="chart">
+            <a href="images/bar-map.png" target="_blank"><img src="images/bar-map.png" alt="Colour map of temperature along an aluminium bar over time. A fast oscillation at the hot end fades within about 25 mm, while a slow oscillation at the cold end reaches the middle." width="1650" height="840" loading="lazy"></a>
+            <figcaption>Temperature along an aluminium bar over one slow period, with 0.005&nbsp;Hz at x = 0 and 0.05&nbsp;Hz at x = L.</figcaption>
+          </figure>
+
+          <ol class="steps steps-4">
+            <li><strong>Simulate</strong>Explicit scheme, stable for CFL ≤ 0.5, and implicit scheme with a tridiagonal system, stable for any CFL. Aluminium, copper or stainless steel.</li>
+            <li><strong>Post-process</strong>Heat flux, exchange coefficient h and Nusselt number at the ends, and the penetration depth δ of each oscillation.</li>
+            <li><strong>Validate</strong>Exact periodic solution built from complex waves. A pandas study of 20 runs over grid size, CFL and scheme.</li>
+            <li><strong>Compare</strong>At the same CFL, the explicit scheme is 2 to 5 times more accurate. The implicit scheme stays stable at any time step.</li>
+          </ol>
+
+          <div class="gallery">
+            <figure>
+              <a href="images/bar-convergence.png" target="_blank"><img src="images/bar-convergence.png" alt="Log-log plot of maximum error against grid step for both schemes, all parallel to a slope-2 line" loading="lazy"></a>
+              <figcaption>Error against grid step: order 2 for both schemes</figcaption>
+            </figure>
+            <figure>
+              <a href="images/bar-amplitude.png" target="_blank"><img src="images/bar-amplitude.png" alt="Oscillation amplitude along the bar for two frequency cases, solver points on the exact curves" loading="lazy"></a>
+              <figcaption>How the oscillations fade along the bar</figcaption>
+            </figure>
+            <figure>
+              <a href="images/bar-positions.png" target="_blank"><img src="images/bar-positions.png" alt="Temperature over time at 10, 50 and 90 percent of the bar length" loading="lazy"></a>
+              <figcaption>Temperature over time at three points</figcaption>
             </figure>
           </div>
         </div>
@@ -340,7 +389,7 @@
         </div>
         <div>
           <h3>Programming</h3>
-          <ul><li>Python</li><li>MATLAB</li><li>Arduino</li></ul>
+          <ul><li>Python (NumPy, SciPy, pandas, Matplotlib)</li><li>MATLAB</li><li>Arduino</li></ul>
         </div>
       </div>
     </div>
