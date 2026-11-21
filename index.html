@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohamed Rayan Aissat · Thermal engineering and numerical simulation</title>
-<meta name="description" content="Portfolio of Mohamed Rayan Aissat, M2 MSME student at Université Paul Sabatier Toulouse III: heat transfer, CFD and mechanical design projects.">
+<title>AISSAT Mohamed Rayan · Thermal engineering and numerical simulation</title>
+<meta name="description" content="Portfolio of AISSAT Mohamed Rayan, M2 MSME student at Université Paul Sabatier Toulouse III: heat transfer, CFD and mechanical design projects.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
@@ -42,6 +42,15 @@
   .side { border-left: 3px solid var(--hot); padding-left: 22px; }
   .side p { color: var(--ink-2); font-size: 16px; }
   .side p strong { color: var(--ink); font-weight: 700; }
+  .reach { margin-top: 12px; font-size: 15.5px; line-height: 1.7; }
+  .reach a { color: var(--ink); font-weight: 600; text-decoration: none; }
+  .reach a:hover { color: var(--blue); text-decoration: underline; }
+  .reach-big { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 12px 56px; margin: 0 0 32px; }
+  .reach-big dt { font-size: 14px; color: #8fa0ae; }
+  .reach-big dd { font-size: 20px; font-weight: 600; }
+  .reach-big a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.35); }
+  .reach-big a:hover { border-color: var(--hot); }
+  @media (max-width: 900px) { .reach-big { grid-template-columns: 1fr; } }
   .btns { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
   .btn { display: inline-block; padding: 11px 18px; font-size: 15.5px; font-weight: 600; text-decoration: none; border: 2px solid var(--ink); color: var(--ink); }
   .btn.solid { background: var(--ink); color: #fff; }
@@ -49,19 +58,34 @@
 
   /* project grid */
   #projects { padding: 8px 0 96px; }
-  .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 44px 28px; }
-  .card { grid-column: span 4; text-decoration: none; color: var(--ink); display: flex; flex-direction: column; }
-  .card.big { grid-column: span 6; }
-  .cover { display: block; overflow: hidden; border: 1px solid var(--line); background: var(--mist); }
-  .cover img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; transition: transform .5s ease; }
-  .card:hover .cover img { transform: scale(1.03); }
-  @media (prefers-reduced-motion: reduce) { .cover img { transition: none; } .card:hover .cover img { transform: none; } }
-  .cat { margin-top: 16px; font-size: 14px; color: var(--hot); font-weight: 600; }
-  .ttl { margin-top: 4px; font-weight: 800; font-stretch: 108%; font-size: 22px; line-height: 1.2; }
-  .card.big .ttl { font-size: 26px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; text-decoration: none; color: var(--ink); transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -14px rgba(19,33,46,.28); border-color: #c9d2da; }
+  .card:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .cover { display: block; overflow: hidden; background: var(--mist); border-bottom: 1px solid var(--line); }
+  .cover img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; transition: transform .5s ease; }
+  .card:hover .cover img { transform: scale(1.04); }
+  .body { display: flex; flex-direction: column; flex: 1; padding: 20px 22px 20px; }
+  .cat { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--ink-2); }
+  .cat::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+  .c-heat { --c: var(--hot); } .c-fluid { --c: var(--blue); } .c-build { --c: #3f8f5a; }
+  .ttl { margin-top: 8px; font-weight: 800; font-stretch: 106%; font-size: 20px; line-height: 1.22; }
   .card:hover .ttl { color: var(--blue); }
-  .line { margin-top: 8px; color: var(--ink-2); font-size: 16px; max-width: 34em; }
-  .tl { margin-top: 10px; font-size: 14px; color: var(--ink-2); }
+  .line { margin-top: 8px; color: var(--ink-2); font-size: 15px; line-height: 1.5; }
+  .cfoot { margin-top: auto; padding-top: 18px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: 12.5px; padding: 3px 9px; border-radius: 999px; background: var(--mist); color: var(--ink-2); }
+  .more { font-size: 13.5px; font-weight: 700; color: var(--blue); white-space: nowrap; }
+  .card.feat { grid-column: 1 / -1; display: grid; grid-template-columns: 1.35fr 1fr; }
+  .card.feat .cover { border-bottom: none; border-right: 1px solid var(--line); }
+  .card.feat .cover img { height: 100%; aspect-ratio: auto; min-height: 340px; }
+  .card.feat .body { padding: 34px 36px; justify-content: center; }
+  .card.feat .ttl { font-size: 30px; }
+  .card.feat .line { font-size: 17px; }
+  .card.feat .cfoot { margin-top: 0; padding-top: 28px; }
+  @media (prefers-reduced-motion: reduce) { .card, .cover img { transition: none; } .card:hover { transform: none; } .card:hover .cover img { transform: none; } }
+  @media (max-width: 1000px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } .card.feat { grid-template-columns: 1fr; } .card.feat .cover { border-right: none; border-bottom: 1px solid var(--line); } .card.feat .cover img { min-height: 0; aspect-ratio: 16/10; } .card.feat .body { padding: 22px; } .card.feat .ttl { font-size: 22px; } }
 
   /* about strip */
   .about { background: var(--mist); padding: 80px 0; }
@@ -170,7 +194,6 @@
     .wrap { padding: 0 20px; }
     .bar nav { display: none; }
     .intro { grid-template-columns: 1fr; gap: 28px; padding-top: 48px; padding-bottom: 40px; }
-    .card, .card.big { grid-column: span 12; }
     .about .wrap { grid-template-columns: 1fr; }
     .steps, .steps-4, .gallery { grid-template-columns: 1fr; }
     .study { grid-template-columns: 1fr; gap: 12px; }
@@ -182,7 +205,7 @@
 
 <header class="bar">
   <div class="wrap">
-    <a class="mark" href="#">R. Aissat</a>
+    <a class="mark" href="#">AISSAT M. Rayan</a>
     <nav aria-label="Sections">
       <a href="#projects">Projects</a>
       <a href="#resume">Resume</a>
@@ -195,11 +218,12 @@
 <main id="home">
   <div class="wrap intro">
     <div>
-      <h1>Mohamed Rayan Aissat</h1>
+      <h1>AISSAT<br>Mohamed Rayan</h1>
       <p class="role">Engineering student in thermal and numerical simulation, M2 MSME at Université Paul Sabatier Toulouse III.</p>
     </div>
     <div class="side">
       <p><strong>Looking for a 4 to 6 month internship from February 2027,</strong> in thermal engineering or numerical simulation.</p>
+      <p class="reach"><a href="mailto:rayan.aissat22@gmail.com">rayan.aissat22@gmail.com</a><br><a href="tel:+33751173901">+33 7 51 17 39 01</a></p>
       <div class="btns">
         <a class="btn solid" href="cv.pdf">Download my CV</a>
         <a class="btn" href="https://www.linkedin.com/in/mohamed-rayan-aissat-56880b337" target="_blank" rel="noopener">LinkedIn</a>
@@ -209,54 +233,68 @@
 
   <section id="projects" aria-label="Projects">
     <div class="wrap grid">
-      <a class="card big" href="#gss">
+      <a class="card feat c-heat" href="#gss">
         <span class="cover"><img src="images/covers/gss.jpg" alt="" loading="lazy" width="1200" height="800"></span>
-        <span class="cat">Heat transfer</span>
-        <span class="ttl">Cooling the air intake of an MS5002B gas turbine</span>
-        <span class="line">Finned-tube heat exchanger for a gas turbine air intake. Estimated July efficiency rises from 20.5&nbsp;% to 27.0&nbsp;%.</span>
-        <span class="tl">SolidWorks, Flow Simulation</span>
+        <span class="body">
+          <span class="cat">Heat transfer</span>
+          <span class="ttl">Cooling the air intake of an MS5002B gas turbine</span>
+          <span class="line">Finned-tube heat exchanger for a gas turbine air intake. Estimated July efficiency rises from 20.5&nbsp;% to 27.0&nbsp;%.</span>
+          <span class="cfoot"><span class="chips"><span class="chip">SolidWorks</span><span class="chip">Flow Simulation</span></span><span class="more">View project</span></span>
+        </span>
       </a>
-      <a class="card big" href="#bar">
+      <a class="card std c-heat" href="#bar">
         <span class="cover"><img src="images/covers/bar.jpg" alt="" loading="lazy" width="1200" height="800"></span>
-        <span class="cat">Heat transfer</span>
-        <span class="ttl">Heat conduction in a bar with oscillating end temperatures</span>
-        <span class="line">1D transient conduction solver, explicit and implicit, checked against an exact solution: convergence order 2.00.</span>
-        <span class="tl">Python</span>
+        <span class="body">
+          <span class="cat">Heat transfer</span>
+          <span class="ttl">Heat conduction in a bar with oscillating end temperatures</span>
+          <span class="line">1D transient conduction solver, explicit and implicit, checked against an exact solution: convergence order 2.00.</span>
+          <span class="cfoot"><span class="chips"><span class="chip">Python</span></span><span class="more">View project</span></span>
+        </span>
       </a>
-      <a class="card small" href="#comsol">
+      <a class="card std c-heat" href="#comsol">
         <span class="cover"><img src="images/covers/comsol.jpg" alt="" loading="lazy" width="1200" height="800"></span>
-        <span class="cat">Heat transfer</span>
-        <span class="ttl">Heat transfer studies in COMSOL</span>
-        <span class="line">Heat exchanger, solar pond and Canadian well. Best exchanger trade-off found at Re ≈ 200.</span>
-        <span class="tl">COMSOL</span>
+        <span class="body">
+          <span class="cat">Heat transfer</span>
+          <span class="ttl">Heat transfer studies in COMSOL</span>
+          <span class="line">Heat exchanger, solar pond and Canadian well. Best exchanger trade-off found at Re ≈ 200.</span>
+          <span class="cfoot"><span class="chips"><span class="chip">COMSOL</span></span><span class="more">View project</span></span>
+        </span>
       </a>
-      <a class="card small" href="#openfoam">
+      <a class="card std c-fluid" href="#openfoam">
         <span class="cover"><img src="images/covers/openfoam.jpg" alt="" loading="lazy" width="1200" height="800"></span>
-        <span class="cat">Fluid dynamics</span>
-        <span class="ttl">Lid-driven cavity in OpenFOAM: mesh and scheme study</span>
-        <span class="line">Mesh and scheme study against Ghia et al. Error of 0.19&nbsp;% of the lid speed on the finest mesh.</span>
-        <span class="tl">OpenFOAM, ParaView</span>
+        <span class="body">
+          <span class="cat">Fluid dynamics</span>
+          <span class="ttl">Lid-driven cavity in OpenFOAM: mesh and scheme study</span>
+          <span class="line">Mesh and scheme study against Ghia et al. Error of 0.19&nbsp;% of the lid speed on the finest mesh.</span>
+          <span class="cfoot"><span class="chips"><span class="chip">OpenFOAM</span><span class="chip">ParaView</span></span><span class="more">View project</span></span>
+        </span>
       </a>
-      <a class="card small" href="#duct">
+      <a class="card std c-fluid" href="#duct">
         <span class="cover"><img src="images/covers/duct.jpg" alt="" loading="lazy" width="1200" height="800"></span>
-        <span class="cat">Fluid dynamics</span>
-        <span class="ttl">Turbulent flow in a smooth rectangular duct</span>
-        <span class="line">RANS mixing-length solver written from scratch. Within 5&nbsp;% of Dean’s correlation above Re ≈ 14&nbsp;000.</span>
-        <span class="tl">Python</span>
+        <span class="body">
+          <span class="cat">Fluid dynamics</span>
+          <span class="ttl">Turbulent flow in a smooth rectangular duct</span>
+          <span class="line">RANS mixing-length solver written from scratch. Within 5&nbsp;% of Dean’s correlation above Re ≈ 14&nbsp;000.</span>
+          <span class="cfoot"><span class="chips"><span class="chip">Python</span></span><span class="more">View project</span></span>
+        </span>
       </a>
-      <a class="card big" href="#shear">
+      <a class="card std c-fluid" href="#shear">
         <span class="cover"><img src="images/covers/shear.jpg" alt="" loading="lazy" width="1200" height="800"></span>
-        <span class="cat">Fluid dynamics</span>
-        <span class="ttl">Laminar mixing layer between a cold and a hot air stream</span>
-        <span class="line">Similarity solutions by shooting and Newton. A hot slow stream raises friction by 35 to 46&nbsp;%.</span>
-        <span class="tl">Python</span>
+        <span class="body">
+          <span class="cat">Fluid dynamics</span>
+          <span class="ttl">Laminar mixing layer between a cold and a hot air stream</span>
+          <span class="line">Similarity solutions by shooting and Newton. A hot slow stream raises friction by 35 to 46&nbsp;%.</span>
+          <span class="cfoot"><span class="chips"><span class="chip">Python</span></span><span class="more">View project</span></span>
+        </span>
       </a>
-      <a class="card big" href="#solar">
+      <a class="card std c-build" href="#solar">
         <span class="cover"><img src="images/covers/solar.jpg" alt="" loading="lazy" width="1200" height="800"></span>
-        <span class="cat">Design and build</span>
-        <span class="ttl">Two-axis solar tracker</span>
-        <span class="line">Designed, built and programmed: steel frame, two stepper-driven axes and light-sensor tracking.</span>
-        <span class="tl">SolidWorks, Arduino</span>
+        <span class="body">
+          <span class="cat">Design and build</span>
+          <span class="ttl">Two-axis solar tracker</span>
+          <span class="line">Designed, built and programmed: steel frame, two stepper-driven axes and light-sensor tracking.</span>
+          <span class="cfoot"><span class="chips"><span class="chip">SolidWorks</span><span class="chip">Arduino</span></span><span class="more">View project</span></span>
+        </span>
       </a>
     </div>
   </section>
@@ -676,11 +714,17 @@
   <div class="wrap">
     <h2>Looking for an internship from February 2027</h2>
     <p>Four to six months in thermal engineering or numerical simulation, in Toulouse or elsewhere in Europe.</p>
+    <dl class="reach-big">
+      <div><dt>Email</dt><dd><a href="mailto:rayan.aissat22@gmail.com">rayan.aissat22@gmail.com</a></dd></div>
+      <div><dt>Phone</dt><dd><a href="tel:+33751173901">+33 7 51 17 39 01</a></dd></div>
+      <div><dt>Based in</dt><dd>Toulouse, France</dd></div>
+    </dl>
     <div class="btns">
-      <a class="btn solid" href="https://www.linkedin.com/in/mohamed-rayan-aissat-56880b337" target="_blank" rel="noopener">Message me on LinkedIn</a>
+      <a class="btn solid" href="mailto:rayan.aissat22@gmail.com">Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/mohamed-rayan-aissat-56880b337" target="_blank" rel="noopener">LinkedIn</a>
       <a class="btn" href="cv.pdf">Download my CV</a>
     </div>
-    <p class="foot">Mohamed Rayan Aissat, Toulouse, 2026</p>
+    <p class="foot">AISSAT Mohamed Rayan, Toulouse, 2026</p>
   </div>
 </section>
 
@@ -696,10 +740,10 @@
     if (isPage) {
       window.scrollTo(0, 0); requestAnimationFrame(() => window.scrollTo(0, 0));
       const t = document.querySelector('#' + h + ' h1');
-      document.title = t.textContent + ' · Mohamed Rayan Aissat';
+      document.title = t.textContent + ' · AISSAT Mohamed Rayan';
       t.setAttribute('tabindex', '-1'); t.focus({ preventScroll: true });
     } else {
-      document.title = 'Mohamed Rayan Aissat · Thermal engineering and numerical simulation';
+      document.title = 'AISSAT Mohamed Rayan · Thermal engineering and numerical simulation';
       if (h) { const el = document.getElementById(h); if (el) el.scrollIntoView(); }
     }
   }
