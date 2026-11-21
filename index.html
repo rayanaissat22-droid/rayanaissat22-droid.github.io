@@ -178,7 +178,7 @@
   <section id="projects">
     <div class="wrap">
       <h2 class="sec-title">Projects</h2>
-      <p class="sec-intro">Heat exchanger design, heat conduction, turbulence modelling and mechanical prototyping.</p>
+      <p class="sec-intro">Heat exchangers, heat conduction, turbulent and compressible flows, and mechanical prototyping.</p>
 
       <!-- GSS heat exchanger -->
       <article class="case">
@@ -320,6 +320,55 @@
             <figure>
               <a href="images/tp-wall-law.png" target="_blank"><img src="images/tp-wall-law.png" alt="Velocity in wall units against distance from the wall, compared with the viscous sublayer and log law" loading="lazy"></a>
               <figcaption>Velocity in wall units against the law of the wall</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+
+      <!-- Compressible shear layer -->
+      <article class="case">
+        <div class="case-side">
+          <p class="ctx">M2 MSME fluid mechanics project (SAÉ), Université Paul Sabatier, 2026</p>
+          <h3>Laminar mixing layer between a cold and a hot air stream</h3>
+          <ul class="tools">
+            <li>Python, NumPy, Matplotlib</li>
+            <li>Similarity solutions</li>
+            <li>Shooting method, RK4, Newton</li>
+            <li>Howarth–Dorodnitsyn transformation</li>
+          </ul>
+          <p class="repo"><a href="https://github.com/rayanaissat22-droid/compressible-shear-layer" target="_blank" rel="noopener">See the code on GitHub</a></p>
+        </div>
+        <div class="case-main">
+          <p>Two parallel air streams meet behind a splitter plate: a fast one at 300&nbsp;K above, a slower one at 600&nbsp;K below. Viscosity and conduction smooth out the jump in velocity and temperature, and a mixing layer grows downstream. Because the hot gas is half as dense, the layer is not symmetric.</p>
+          <p>I derived the similarity equations, wrote a Python solver for them, validated it three ways, and studied how the speed ratio and the hot-stream temperature change friction and heat transfer.</p>
+
+          <p class="result">Heating the slow stream to 600&nbsp;K makes the layer thicker and raises skin friction by <b>35 to 46&nbsp;%</b>, while the Nusselt number changes by less than 5&nbsp;%.
+            <small>Validated against Schlichting's reference solution to within 2·10⁻⁴.</small></p>
+
+          <figure class="chart">
+            <a href="images/sl-field.png" target="_blank"><img src="images/sl-field.png" alt="Temperature field of the mixing layer over 10 cm. The thermal mixing zone grows downstream and spreads mostly into the hot, lighter gas below." width="1650" height="840" loading="lazy"></a>
+            <figcaption>Temperature field for a speed ratio of 0.25. The mixing zone grows as √x and spreads mostly into the hot, lighter gas.</figcaption>
+          </figure>
+
+          <ol class="steps steps-4">
+            <li><strong>Model</strong>Constant-pressure boundary-layer equations. With the Howarth–Dorodnitsyn transformation and Chapman–Rubesin, they reduce to F‴ + F F″ = 0 and G‴/Pr + F G″ = 0.</li>
+            <li><strong>Solve</strong>Shooting with RK4 and a three-parameter Newton, closed by Ting's entrainment condition. G is solved by superposing two linear solutions.</li>
+            <li><strong>Validate</strong>Schlichting's solution (2·10⁻⁴), the course reference values (1.5·10⁻³) and the Reynolds analogy at Pr = 1 (10⁻⁴). RK4 checked at order 4.</li>
+            <li><strong>Analyse</strong>Speed ratios from 0 to 0.75 and hot-stream temperatures from 300 to 900&nbsp;K. With Pr = 0.5, the thermal layer is 40 to 70&nbsp;% thicker than the velocity layer.</li>
+          </ol>
+
+          <div class="gallery">
+            <figure>
+              <a href="images/sl-u.png" target="_blank"><img src="images/sl-u.png" alt="Velocity profiles across the layer for four speed ratios" loading="lazy"></a>
+              <figcaption>Velocity across the layer for four speed ratios</figcaption>
+            </figure>
+            <figure>
+              <a href="images/sl-T.png" target="_blank"><img src="images/sl-T.png" alt="Temperature profiles across the layer for four speed ratios" loading="lazy"></a>
+              <figcaption>Temperature across the layer, stretched on the hot side</figcaption>
+            </figure>
+            <figure>
+              <a href="images/sl-t2.png" target="_blank"><img src="images/sl-t2.png" alt="Skin friction rises 78 percent and Nusselt number 5.5 percent as the hot stream goes from 300 to 900 K" loading="lazy"></a>
+              <figcaption>Friction against heat transfer as the hot stream heats up</figcaption>
             </figure>
           </div>
         </div>
