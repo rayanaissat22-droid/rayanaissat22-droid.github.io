@@ -118,6 +118,31 @@
   .pager small { display: block; font-weight: 400; font-size: 14px; color: var(--ink-2); margin-bottom: 4px; }
   .pager .nx { text-align: right; }
 
+  /* resume page */
+  .resume-hero { position: relative; height: 300px; background: url("images/covers/openfoam.jpg") center 40% / cover; display: flex; align-items: center; justify-content: center; }
+  .resume-hero::before { content: ""; position: absolute; inset: 0; background: rgba(19, 33, 46, .55); }
+  .resume-hero h1 { position: relative; color: #fff; font-weight: 900; font-stretch: 125%; font-size: clamp(40px, 6vw, 72px); }
+  .resume-hero h1:focus { outline: none; }
+  .resume-dl { text-align: center; margin: -26px 0 0; position: relative; }
+  .resume-dl .btn { border-radius: 999px; padding: 13px 26px; background: var(--ink); color: #fff; border-color: var(--ink); }
+  .resume-dl .btn:hover { background: var(--hot); border-color: var(--hot); }
+  .resume-sheet { max-width: 820px; margin: 48px auto 96px; padding: 48px 56px; border: 1px solid var(--line); box-shadow: 0 1px 0 var(--line); }
+  @media (max-width: 900px) { .resume-sheet { padding: 28px 20px; margin: 36px 16px 72px; } .cv .row { flex-direction: column; gap: 0; } .cv .cols { grid-template-columns: 1fr; } }
+.cv { font-family: "Archivo", "Segoe UI", system-ui, sans-serif; color: #13212e; font-size: 15px; line-height: 1.5; }
+  .cv a { color: #2b5c8a; text-decoration: none; }
+  .cv-head h2 { font-weight: 900; font-stretch: 118%; font-size: 30px; line-height: 1.1; }
+  .cv-head p { color: #4f5d6b; font-size: 13.5px; margin-top: 6px; }
+  .cv section { margin-top: 20px; }
+  .cv h3 { font-size: 16px; font-weight: 700; border-bottom: 1.5px solid #13212e; padding-bottom: 4px; margin-bottom: 8px; }
+  .cv .row { display: flex; justify-content: space-between; gap: 16px; padding: 4px 0; }
+  .cv .row strong { display: block; font-weight: 700; }
+  .cv .row em { display: block; font-style: normal; color: #4f5d6b; font-size: 14px; }
+  .cv .row span { color: #4f5d6b; font-size: 14px; white-space: nowrap; }
+  .cv ul { margin: 4px 0 0 18px; }
+  .cv li { margin: 2px 0; font-size: 14px; }
+  .cv .cols { display: grid; grid-template-columns: 1.7fr 1fr; gap: 28px; }
+  .cv .cols p { font-size: 14px; margin: 3px 0; }
+  
   @media (max-width: 900px) {
     .wrap { padding: 0 20px; }
     .bar nav { display: none; }
@@ -137,6 +162,7 @@
     <a class="mark" href="#">R. Aissat</a>
     <nav aria-label="Sections">
       <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
       <a href="#about">Skills and education</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -557,6 +583,61 @@
       <nav class="pager" aria-label="Other projects"><a href="#shear"><small>Previous</small>Laminar mixing layer between a cold and a hot air stream</a><span></span></nav>
     </div>
   </article>
+  <article class="page resume" id="resume" hidden style="padding-top:0">
+    <div class="resume-hero"><h1>Resume</h1></div>
+    <div class="resume-dl"><a class="btn" href="cv.pdf" download>Download resume PDF</a></div>
+    <div class="resume-sheet">
+<div class="cv">
+  <header class="cv-head">
+    <h2>Mohamed Rayan Aissat</h2>
+    <p>Toulouse, France · <a href="mailto:rayan.aissat22@gmail.com">rayan.aissat22@gmail.com</a> · <a href="https://www.linkedin.com/in/mohamed-rayan-aissat-56880b337">linkedin.com/in/mohamed-rayan-aissat-56880b337</a> · <a href="https://rayanaissat22-droid.github.io">rayanaissat22-droid.github.io</a></p>
+  </header>
+
+  <section>
+    <h3>Education</h3>
+    <div class="row"><div><strong>Master MSME, Modelling and Simulation in Mechanics and Energy</strong><em>Université Paul Sabatier Toulouse III</em></div><span>2026 – 2027</span></div>
+    <div class="row"><div><strong>Master 1, Mechanical Manufacturing</strong><em>Université de Constantine 1, Algeria</em></div><span></span></div>
+    <div class="row"><div><strong>Licence, Mechanical Production and Industrialisation</strong><em>Université de Constantine 1, Algeria</em></div><span>2021 – 2024</span></div>
+  </section>
+
+  <section>
+    <h3>Experience</h3>
+    <div class="row"><div><strong>Engineering intern, GSS (SONATRACH – SINOPEC)</strong><em>Zarzaitine oil field, Algeria</em></div><span>Mar – Apr 2024</span></div>
+    <ul>
+      <li>Studied an air-intake heat exchanger to limit the summer efficiency loss of an MS5002B gas turbine.</li>
+      <li>Modelled a finned-tube exchanger in SolidWorks and compared fin counts with SolidWorks Flow Simulation.</li>
+      <li>Worked within the site's safety rules and procedures, alongside the operations team.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Projects</h3>
+    <div class="row"><div><strong>Heat conduction in a bar with oscillating end temperatures</strong><em>Python solver, explicit and implicit schemes, validated against an exact solution</em></div><span>2026</span></div>
+    <div class="row"><div><strong>Heat transfer studies in COMSOL</strong><em>Tube heat exchanger, solar pond and Canadian well, coupled flow and heat transfer</em></div><span>2026</span></div>
+    <div class="row"><div><strong>Lid-driven cavity in OpenFOAM</strong><em>Mesh and convection-scheme study against reference data</em></div><span>2026</span></div>
+    <div class="row"><div><strong>Turbulent flow in a rectangular duct</strong><em>RANS mixing-length solver written in Python, checked on the Moody diagram</em></div><span>2026</span></div>
+    <div class="row"><div><strong>Compressible laminar mixing layer</strong><em>Similarity solutions by shooting method (RK4, Newton)</em></div><span>2026</span></div>
+    <div class="row"><div><strong>Two-axis solar tracker</strong><em>Designed, built and programmed: steel frame, stepper motors, Arduino, light sensors</em></div><span>Personal</span></div>
+  </section>
+
+  <section class="cols">
+    <div>
+      <h3>Skills</h3>
+      <p><strong>Simulation:</strong> ANSYS Fluent, OpenFOAM, ParaView, COMSOL Multiphysics, Abaqus, FreeFem++, SolidWorks Flow Simulation</p>
+      <p><strong>CAD:</strong> SolidWorks, CATIA V5 / 3DEXPERIENCE</p>
+      <p><strong>Programming:</strong> Python (NumPy, SciPy, pandas, Matplotlib), MATLAB, Arduino</p>
+    </div>
+    <div>
+      <h3>Languages</h3>
+      <p>Arabic and Kabyle: native</p>
+      <p>French: C1 (TCF)</p>
+      <p>English: C2 (EF SET)</p>
+    </div>
+  </section>
+</div>
+
+    </div>
+  </article>
 
 <section id="contact" class="contact" aria-label="Contact">
   <div class="wrap">
@@ -572,7 +653,7 @@
 
 <script>
 (function () {
-  const ids = ["gss", "bar", "comsol", "openfoam", "duct", "shear", "solar"];
+  const ids = ["gss", "bar", "comsol", "openfoam", "duct", "shear", "solar"].concat(["resume"]);
   const home = document.getElementById('home');
   function route() {
     const h = location.hash.slice(1);
