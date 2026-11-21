@@ -106,6 +106,13 @@
 
   .repo { margin-top: 22px; font-weight: 600; }
   .steps-4 { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .studies { margin-top: 56px; display: grid; gap: 36px; }
+  .study { display: grid; grid-template-columns: 1fr 1.1fr; gap: 28px; align-items: start; }
+  .study img { width: 100%; aspect-ratio: 16 / 10; object-fit: contain; background: #fff; border: 1px solid var(--steel-2); }
+  .study h4 { font-size: 19px; font-weight: 700; margin-bottom: 6px; }
+  .study p { font-size: 15.5px; color: var(--ink-2); }
+  .study .note { margin-top: 8px; font-size: 14px; }
+  @media (max-width: 900px) { .study { grid-template-columns: 1fr; gap: 12px; } }
   .soon { margin-top: 28px; font-size: 15px; color: var(--ink-2); }
 
   /* ---------- Skills ---------- */
@@ -272,6 +279,57 @@
               <a href="images/bar-positions.png" target="_blank"><img src="images/bar-positions.png" alt="Temperature over time at 10, 50 and 90 percent of the bar length" loading="lazy"></a>
               <figcaption>Temperature over time at three points</figcaption>
             </figure>
+          </div>
+        </div>
+      </article>
+
+      <!-- COMSOL heat transfer labs -->
+      <article class="case">
+        <div class="case-side">
+          <p class="ctx">M2 MSME heat transfer labs, Université Paul Sabatier, 2026</p>
+          <h3>Heat transfer studies in COMSOL</h3>
+          <ul class="tools">
+            <li>COMSOL Multiphysics</li>
+            <li>Heat Transfer in Fluids and Solids</li>
+            <li>Laminar Flow, Non-Isothermal Flow</li>
+            <li>Parametric sweeps, correlations</li>
+          </ul>
+        </div>
+        <div class="case-main">
+          <p>Three coupled flow and heat transfer problems, each taken from a real system: a tube heat exchanger, a solar pond and a Canadian well. In each one, I set up the physics and boundary conditions, checked the model against theory, and used the results to explain why the system works or not.</p>
+
+          <p class="result">For a heated tube in cross-flow, heat transfer gains most over pressure loss at Re ≈ 200: <b>3.2 times</b> the heat transfer of an empty channel, for <b>2.1 times</b> the pressure loss.
+            <small>From a sweep of 12 inlet velocities, with the fitted correlation Nu = 1.97 Re<sup>0.40</sup> (R² = 0.97).</small></p>
+
+          <figure class="chart">
+            <a href="images/comsol-pec.png" target="_blank"><img src="images/comsol-pec.png" alt="Heat transfer ratio, pressure loss ratio and their ratio PEC against Reynolds number. PEC peaks at 1.52 near Re 200." width="1650" height="840" loading="lazy"></a>
+            <figcaption>Heat exchanger: heat transfer and pressure loss compared with an empty channel. PEC is their ratio.</figcaption>
+          </figure>
+
+          <div class="studies">
+            <div class="study">
+              <a href="images/comsol-exchanger.png" target="_blank"><img src="images/comsol-exchanger.png" alt="Temperature field around a heated cylinder in a channel, with a warm wake downstream" loading="lazy"></a>
+              <div>
+                <h4>Heat exchanger</h4>
+                <p>Water flows past a heated tube at 80&nbsp;°C. I imposed a developed Poiseuille inlet, measured the pressure loss and outlet temperature, and fitted correlations for friction and Nusselt number.</p>
+                <p class="note">With Ouissal Malak Chouali</p>
+              </div>
+            </div>
+            <div class="study">
+              <a href="images/comsol-pond.png" target="_blank"><img src="images/comsol-pond.png" alt="Temperature field of water heated from below, showing four convection rolls with rising and sinking plumes" loading="lazy"></a>
+              <div>
+                <h4>Solar pond</h4>
+                <p>Water heated from below forms convection rolls that carry heat to the surface. For a 1&nbsp;m pond, Ra ≈ 5·10¹², so the water could only stay still if it were about 1&nbsp;mm deep. A salt gradient is needed to keep the heat at the bottom.</p>
+                <p class="note">With Ouissal Malak Chouali</p>
+              </div>
+            </div>
+            <div class="study">
+              <a href="images/comsol-well.png" target="_blank"><img src="images/comsol-well.png" alt="Temperature field in the ground around an L-shaped air pipe during a hot afternoon" loading="lazy"></a>
+              <div>
+                <h4>Canadian well</h4>
+                <p>Outside air flows through a pipe buried 2&nbsp;m deep. Over a day/night cycle, the swing in air temperature drops from 10&nbsp;K to 4.3&nbsp;K. The model showed why a 2&nbsp;m pipe is not enough: contact time is only about a minute, and the ground above the pipe heats up.</p>
+              </div>
+            </div>
           </div>
         </div>
       </article>
