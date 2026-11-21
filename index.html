@@ -130,6 +130,25 @@
   .cv .plain { font-size: 14px; }
   .cv .row i { font-style: normal; color: #2b5c8a; font-size: 13px; font-weight: 600; margin-left: 4px; }
   .cv .links { margin-top: 2px; }
+  .cv2 { font-family: Carlito, Calibri, "Segoe UI", system-ui, sans-serif; color: #13212e; font-size: 15.5px; line-height: 1.45; }
+  .cv2 a { color: inherit; text-decoration: none; }
+  .cv2 a:hover { color: var(--blue); text-decoration: underline; }
+  .cv2-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+  .cv2-head h2 { font-weight: 400; font-size: 32px; line-height: 1.1; }
+  .cv2-head p { font-size: 14.5px; }
+  .cv2-head > div:first-child p { margin-top: 6px; }
+  .cv2-head .r { text-align: right; }
+  .cv2 .obj { margin: 14px 0 4px; }
+  .cv2 h3 { font-weight: 400; font-size: 20px; border-top: 1px solid #13212e; padding-top: 4px; margin: 18px 0 6px; }
+  .cv2 .it { margin: 0 0 10px 10px; }
+  .cv2 .ln { display: flex; justify-content: space-between; gap: 16px; }
+  .cv2 .ln b { font-size: 14.5px; }
+  .cv2 .dg { font-weight: 700; font-style: italic; }
+  .cv2 ul { margin: 3px 0 0 26px; }
+  .cv2 li { margin: 2px 0; }
+  .cv2 .sk { margin-left: 10px; }
+  .cv2 .sk p { margin: 2px 0; }
+  @media (max-width: 900px) { .cv2-head { flex-direction: column; } .cv2-head .r { text-align: left; } .cv2 .ln { flex-direction: column; gap: 0; } }
   .resume-sheet { max-width: 820px; margin: 48px auto 96px; padding: 48px 56px; border: 1px solid var(--line); box-shadow: 0 1px 0 var(--line); }
   @media (max-width: 900px) { .resume-sheet { padding: 28px 20px; margin: 36px 16px 72px; } .cv .row { flex-direction: column; gap: 0; } .cv .cols { grid-template-columns: 1fr; } }
 .cv { font-family: "Archivo", "Segoe UI", system-ui, sans-serif; color: #13212e; font-size: 15px; line-height: 1.5; }
@@ -589,64 +608,65 @@
   </article>
   <article class="page resume" id="resume" hidden style="padding-top:0">
     <div class="resume-hero"><h1>Resume</h1></div>
-    <div class="resume-dl"><a class="btn" href="cv.pdf" download>Download resume (English)</a> <a class="btn" href="cv_fr.pdf" download>CV en français</a></div>
+    <div class="resume-dl"><a class="btn" href="cv.pdf" download>Download resume PDF</a> <a class="btn" href="cv_fr.pdf" download>CV en français</a></div>
     <div class="resume-sheet">
-<div class="cv">
-  <header class="cv-head">
-    <h2>Mohamed Rayan Aissat</h2>
-    <p>Toulouse, France · <a href="mailto:rayan.aissat22@gmail.com">rayan.aissat22@gmail.com</a> · +33 7 51 17 39 01</p>
-    <p class="links">Portfolio: <a href="https://rayanaissat22-droid.github.io">rayanaissat22-droid.github.io</a> · GitHub: <a href="https://github.com/rayanaissat22-droid">github.com/rayanaissat22-droid</a> · LinkedIn: <a href="https://www.linkedin.com/in/mohamed-rayan-aissat-56880b337">mohamed-rayan-aissat-56880b337</a></p>
+<div class="cv2">
+  <header class="cv2-head">
+    <div>
+      <h2>AISSAT Mohamed Rayan</h2>
+      <p><a href="mailto:rayan.aissat22@gmail.com">rayan.aissat22@gmail.com</a> | +33 7 51 17 39 01 | Toulouse</p>
+    </div>
+    <div class="r">
+      <p><strong>Portfolio:</strong> <a href="https://rayanaissat22-droid.github.io">rayanaissat22-droid.github.io</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/rayanaissat22-droid">github.com/rayanaissat22-droid</a></p>
+      <p><a href="https://www.linkedin.com/in/mohamed-rayan-aissat-56880b337">linkedin.com/in/mohamed-rayan-aissat-56880b337</a></p>
+    </div>
   </header>
+  <p class="obj">Seeking a 4 to 6 month final-year internship in thermal engineering and numerical simulation, starting February 2027.</p>
 
-  <section>
-    <h3>Profile</h3>
-    <p class="plain">M2 MSME student at Université Toulouse III, specialising in heat transfer, fluid mechanics and numerical simulation. Experience in design and thermal-fluid simulation applied to energy systems. Looking for a 4 to 6 month final-year internship from February 2027.</p>
-  </section>
+  <h3>Education</h3>
+  <div class="it"><div class="ln"><span><b>UNIVERSITÉ TOULOUSE III – PAUL SABATIER</b> | <i>Toulouse, France</i></span><i>2025 – 2027</i></div>
+    <div class="dg">M1 and M2 Modelling and Simulation in Mechanics and Energy (MSME), M2 in progress</div>
+    <ul><li>Heat transfer, thermodynamics, numerical methods, CFD, turbulence, combustion, finite elements.</li></ul></div>
+  <div class="it"><div class="ln"><span><b>UNIVERSITÉ DE CONSTANTINE 1 – ISTA</b> | <i>Constantine, Algeria</i></span><i>2024 – 2025</i></div>
+    <div class="dg">M1 Mechanical Manufacturing</div></div>
+  <div class="it"><div class="ln"><span><b>UNIVERSITÉ DE CONSTANTINE 1 – ISTA</b> | <i>Constantine, Algeria</i></span><i>2021 – 2024</i></div>
+    <div class="dg">Licence (Bachelor’s) in Mechanical Production and Industrialisation</div></div>
 
-  <section>
-    <h3>Education</h3>
-    <div class="row"><div><strong>MSc in Modelling and Simulation in Mechanics and Energy (MSME), M1 and M2</strong><em>Université Toulouse III – Paul Sabatier. Heat transfer, CFD, turbulence, numerical methods</em></div><span>2025 – 2027</span></div>
-    <div class="row"><div><strong>M1 Mechanical Manufacturing (completed), Licence in Mechanical Production and Industrialisation</strong><em>Université de Constantine 1 – ISTA, Algeria</em></div><span>2021 – 2025</span></div>
-  </section>
+  <h3>Work Experience</h3>
+  <div class="it"><div class="ln"><span><b>SONATRACH – SINOPEC (GSS)</b> | <i>Engineering Intern, Maintenance</i></span><i>Mar – Apr 2024</i></div>
+    <ul><li>Designed in SolidWorks an inlet-air cooling heat exchanger for an MS5002B gas turbine.</li>
+      <li>Ran thermal-fluid simulations (SolidWorks Flow Simulation) for several fin counts and inlet temperatures.</li>
+      <li>Under July operating conditions, estimated turbine efficiency went from 20.5% to 27.0% with the selected exchanger.</li></ul></div>
+  <div class="it"><div class="ln"><span><b>GICA, ALGERIAN CEMENT GROUP</b> | <i>Engineering Intern, Maintenance</i></span><i>Mar – May 2023</i></div>
+    <ul><li>Diagnosed an industrial kiln with recurring failures and identified the probable causes.</li>
+      <li>Carried out corrective maintenance operations with the maintenance team.</li></ul></div>
 
-  <section>
-    <h3>Professional experience</h3>
-    <div class="row"><div><strong>Engineering intern, SONATRACH – SINOPEC joint venture (GSS)</strong><em>Maintenance department, Zarzaïtine, Algeria</em></div><span>Mar – Apr 2024</span></div>
-    <ul>
-      <li>Designed in SolidWorks an inlet-air cooling heat exchanger for an MS5002B gas turbine.</li>
-      <li>Flow Simulation study of fin count and inlet temperature: estimated July efficiency from 20.5&nbsp;% to 27.0&nbsp;%.</li>
-    </ul>
-    <div class="row"><div><strong>Engineering intern, Algerian Cement Industrial Group (GICA)</strong><em>Maintenance department, Bouira, Algeria. Diagnosed an industrial kiln with recurring failures, identified the probable causes and carried out corrective maintenance with the team.</em></div><span>Mar – May 2023</span></div>
-  </section>
+  <h3>Projects</h3>
+  <div class="it"><div class="ln"><span><b>HEAT TRANSFER STUDIES</b> | <i>COMSOL</i></span><i>2026</i></div>
+    <ul><li>Modelled a tube heat exchanger in cross-flow and fitted Nu = 1.97 Re<sup>0.40</sup> for 10 ≤ Re ≤ 500; best PEC trade-off at Re ≈ 200.</li>
+      <li>Explained the failure of a solar pond (natural convection) and the limits of a Canadian well.</li></ul></div>
+  <div class="it"><div class="ln"><span><b>LID-DRIVEN CAVITY</b> | <i>OpenFOAM, ParaView</i></span><i>2026</i></div>
+    <ul><li>Mesh sensitivity study (1,024 to 16,384 cells) and comparison of Gauss linear (2nd order) and Gauss upwind (1st order) convection schemes against Ghia et al.’s reference results; RMS error of 0.19% on the finest mesh.</li></ul></div>
+  <div class="it"><div class="ln"><span><b>TURBULENT FLOW IN A RECTANGULAR DUCT</b> | <i>Python, RANS</i></span><i>2026</i></div>
+    <ul><li>Wrote an unsteady RANS mixing-length solver with Van Driest damping; friction factor within 5% of Dean’s correlation.</li></ul></div>
+  <div class="it"><div class="ln"><span><b>HEAT CONDUCTION SOLVER</b> | <i>Python, MSc project</i></span><i>2025</i></div>
+    <ul><li>Wrote a 1D transient solver (explicit and implicit) for a bar with oscillating end temperatures.</li>
+      <li>Validated it against an exact periodic solution; a 20-run study gave a convergence order of 2.00.</li></ul></div>
+  <div class="it"><div class="ln"><span><b>COMPRESSIBLE LAMINAR MIXING LAYER</b> | <i>Python</i></span><i>2025</i></div>
+    <ul><li>Solved the similarity equations by shooting (RK4, Newton); validated against Schlichting’s solution to 2·10<sup>−4</sup>.</li></ul></div>
+  <div class="it"><div class="ln"><span><b>TWO-AXIS SOLAR TRACKER</b> | <i>Designer – Personal Project</i></span><i>2024</i></div>
+    <ul><li>Designed (SolidWorks), built and programmed (Arduino, stepper motors, light sensors).</li></ul></div>
 
-  <section>
-    <h3>Technical projects</h3>
-    <div class="row"><div><strong>Heat conduction in a bar with oscillating end temperatures</strong> <i>Python</i><em>1D transient solver, explicit and implicit; validated against an exact solution, convergence order 2.00.</em></div><span>MSc 2</span></div>
-    <div class="row"><div><strong>Heat transfer studies</strong> <i>COMSOL</i><em>Tube heat exchanger: Nu = 1.97 Re<sup>0.40</sup>, best performance criterion at Re ≈ 200; solar pond, Canadian well.</em></div><span>MSc 2</span></div>
-    <div class="row"><div><strong>Lid-driven cavity</strong> <i>OpenFOAM, ParaView</i><em>1 024 to 16 384 cells, linear vs upwind; RMS error 0.19&nbsp;% of lid speed against Ghia et al.</em></div><span>MSc 2</span></div>
-    <div class="row"><div><strong>Turbulent flow in a rectangular duct</strong> <i>Python, RANS</i><em>RANS solver, mixing length with Van Driest damping; friction within 5&nbsp;% of Dean’s correlation.</em></div><span>MSc 2</span></div>
-    <div class="row"><div><strong>Compressible laminar mixing layer</strong> <i>Python</i><em>Shooting method (RK4, Newton), validated against Schlichting to 2·10⁻⁴.</em></div><span>MSc 2</span></div>
-    <div class="row"><div><strong>Plate with a hole under tension</strong> <i>COMSOL, finite elements</i><em>Stress concentration validated against Kirsch’s analytical solution.</em></div><span>MSc 1</span></div>
-    <div class="row"><div><strong>Two-axis solar tracker</strong> <i>SolidWorks, Arduino</i><em>Designed, built and programmed: steel frame, steppers, light sensors.</em></div><span>Personal</span></div>
-  </section>
-
-  <section class="cols">
-    <div>
-      <h3>Technical skills</h3>
-      <p><strong>CFD:</strong> ANSYS Fluent, OpenFOAM, ParaView</p>
-      <p><strong>Thermal simulation:</strong> COMSOL Multiphysics, SolidWorks Flow Simulation</p>
-      <p><strong>Numerical methods:</strong> finite differences, finite elements (FreeFem++), RK4, Newton</p>
-      <p><strong>Programming:</strong> Python (NumPy, SciPy, pandas, Matplotlib), MATLAB, LaTeX</p>
-      <p><strong>CAD:</strong> SolidWorks, CATIA V5</p>
-    </div>
-    <div>
-      <h3>Languages and interests</h3>
-      <p>English C2 (EF SET 77/100)</p>
-      <p>French C1 (TCF)</p>
-      <p>Arabic and Kabyle: native</p>
-      <p>Interests: football, martial arts, reading, medieval history</p>
-    </div>
-  </section>
+  <h3>Skills and Languages</h3>
+  <div class="sk">
+    <p><b>CFD:</b> ANSYS Fluent, OpenFOAM, ParaView</p>
+    <p><b>Thermal simulation:</b> COMSOL Multiphysics, SolidWorks Flow Simulation</p>
+    <p><b>Numerical methods:</b> finite differences, finite elements (FreeFem++), RK4, Newton | <b>CAD:</b> SolidWorks, CATIA V5</p>
+    <p><b>Programming:</b> Python (NumPy, SciPy, pandas, Matplotlib), MATLAB | <b>Tools:</b> Word, Excel, PowerPoint, LaTeX</p>
+    <p><b>Languages:</b> English C2 (EF SET 77/100), French C1 (TCF), Arabic and Kabyle (native)</p>
+    <p><b>Interests:</b> football, martial arts, reading, medieval history</p>
+  </div>
 </div>
 
     </div>
