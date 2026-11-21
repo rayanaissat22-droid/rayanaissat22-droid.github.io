@@ -433,6 +433,53 @@
         </div>
       </article>
 
+      <!-- OpenFOAM lid-driven cavity -->
+      <article class="case">
+        <div class="case-side">
+          <p class="ctx">M2 MSME CFD course, Université Paul Sabatier, 2026</p>
+          <h3>Lid-driven cavity in OpenFOAM: mesh and scheme study</h3>
+          <ul class="tools">
+            <li>OpenFOAM (blockMesh, icoFoam)</li>
+            <li>ParaView</li>
+            <li>Python post-processing</li>
+            <li>Verification against reference data</li>
+          </ul>
+        </div>
+        <div class="case-main">
+          <p>The lid-driven cavity is the classic test case for CFD codes: a square box of fluid whose top wall slides at constant speed. I ran six OpenFOAM simulations to see how much the mesh and the convection scheme change the answer, and compared every case with the reference solution of Ghia et al. (1982).</p>
+
+          <p class="result">On the 128 × 128 mesh with a second-order scheme, the velocity profiles match the reference to within <b>0.19&nbsp;%</b> of the lid speed (RMS).
+            <small>Refining the mesh near the walls cut the error by 72&nbsp;% with the same number of cells. A first-order upwind scheme made it 18 times worse.</small></p>
+
+          <figure class="chart">
+            <a href="images/cfd-streamlines.png" target="_blank"><img src="images/cfd-streamlines.png" alt="Streamlines in the cavity at Re 1000 and Re 10000. At 10000 the main vortex is more centred and a new corner eddy appears top left." width="1650" height="930" loading="lazy"></a>
+            <figcaption>Streamlines coloured by velocity. At Re = 10&nbsp;000 the main vortex moves to the centre and a third corner eddy appears, as in the reference.</figcaption>
+          </figure>
+
+          <ol class="steps steps-4">
+            <li><strong>Mesh</strong>Four meshes from 32² to 128², plus a 50² mesh graded towards the walls with blockMesh (growth ratio 1.09 between cells).</li>
+            <li><strong>Solve</strong>icoFoam with the PISO algorithm, Re = 1&nbsp;000 for 50 convective times. Convergence checked on the residuals.</li>
+            <li><strong>Compare</strong>Profiles on both centre lines extracted and compared with Ghia et al. in Python. Apparent order close to 2 on u.</li>
+            <li><strong>Push</strong>Re = 10&nbsp;000: vortex centres within 0.003&nbsp;m of the reference. I showed why the mesh and run time were not yet enough for the peak values.</li>
+          </ol>
+
+          <div class="gallery">
+            <figure>
+              <a href="images/cfd-meshes.png" target="_blank"><img src="images/cfd-meshes.png" alt="Regular and wall-refined 50 by 50 meshes" loading="lazy"></a>
+              <figcaption>Same cell count, different spacing</figcaption>
+            </figure>
+            <figure>
+              <a href="images/cfd-errors.png" target="_blank"><img src="images/cfd-errors.png" alt="Bar chart of RMS error for five cases: the refined 50 by 50 mesh is close to the 128 by 128 one, while upwind on 128 by 128 is as bad as the coarsest mesh" loading="lazy"></a>
+              <figcaption>Error against the reference for each case</figcaption>
+            </figure>
+            <figure>
+              <a href="images/cfd-velocity.png" target="_blank"><img src="images/cfd-velocity.png" alt="Velocity magnitude field in the cavity at Re 1000" loading="lazy"></a>
+              <figcaption>Velocity magnitude at Re = 1&nbsp;000 (m/s)</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+
       <!-- Solar tracker -->
       <article class="case">
         <div class="case-side">
@@ -489,7 +536,7 @@
       <div class="skills">
         <div>
           <h3>Simulation</h3>
-          <ul><li>ANSYS Fluent</li><li>COMSOL Multiphysics</li><li>Abaqus</li><li>FreeFem++</li><li>SolidWorks Flow Simulation</li></ul>
+          <ul><li>ANSYS Fluent</li><li>OpenFOAM and ParaView</li><li>COMSOL Multiphysics</li><li>Abaqus</li><li>FreeFem++</li><li>SolidWorks Flow Simulation</li></ul>
         </div>
         <div>
           <h3>CAD</h3>
