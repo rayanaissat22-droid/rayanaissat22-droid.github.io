@@ -102,7 +102,7 @@
 
   .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
   .gallery a { display: block; background: var(--steel); }
-  .gallery img { width: 100%; aspect-ratio: 16 / 10; object-fit: contain; }
+  .gallery img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
 
   .repo { margin-top: 22px; font-weight: 600; }
   .steps-4 { grid-template-columns: repeat(4, 1fr); gap: 24px; }
@@ -282,14 +282,44 @@
           <p class="ctx">Personal project</p>
           <h3>Two-axis solar tracker</h3>
           <ul class="tools">
-            <li>Mechanical design</li>
-            <li>Arduino</li>
-            <li>Prototyping</li>
+            <li>SolidWorks</li>
+            <li>Arduino Uno, C++</li>
+            <li>NEMA 23 steppers, TB6600 drivers</li>
+            <li>Light sensors (LDR)</li>
           </ul>
+          <p class="repo"><a href="https://github.com/rayanaissat22-droid/solar-tracker" target="_blank" rel="noopener">See the code on GitHub</a></p>
         </div>
         <div class="case-main">
-          <p>I designed and built a tracker that turns a photovoltaic panel on two axes to follow the sun. I made the structure and both rotation axes, and programmed the Arduino that drives them.</p>
-          <p class="soon">Photos of the prototype will be added here.</p>
+          <p>A fixed solar panel only faces the sun for part of the day. I designed and built a tracker that turns the panel on two axes, azimuth and elevation, to keep it pointed at the sun.</p>
+          <p>I modelled it in SolidWorks, built the steel frame, the two rotation axes and the control box, and programmed the Arduino.</p>
+
+          <p class="result">Four light sensors sit in the corners of a cross-shaped shade. When the sun moves, one side falls into shadow, and the motors turn the panel until all four sensors read the same light again.</p>
+
+          <figure class="chart">
+            <a href="images/solar-prototype.jpg" target="_blank"><img src="images/solar-prototype.jpg" alt="The finished two-axis tracker outdoors on grass, with the cross-shaped sensor shade on top of the panel" width="1600" height="1200" loading="lazy"></a>
+            <figcaption>The finished prototype. The wooden cross on top holds the four light sensors.</figcaption>
+          </figure>
+
+          <ol class="steps">
+            <li><strong>Design</strong>SolidWorks model of the frame, the two axes on ball bearings, and a belt drive for the azimuth axis.</li>
+            <li><strong>Build</strong>Frame and base made from square tubing and sheet metal, with the power supply, Arduino and two TB6600 stepper drivers housed in the base.</li>
+            <li><strong>Control</strong>Automatic mode compares the sensor pairs and steps each motor when the difference passes a threshold. Manual mode uses push buttons or a phone over Bluetooth.</li>
+          </ol>
+
+          <div class="gallery">
+            <figure>
+              <a href="images/solar-cad.jpg" target="_blank"><img src="images/solar-cad.jpg" alt="SolidWorks model of the tracker with panel, frame, stepper motor and base" loading="lazy"></a>
+              <figcaption>SolidWorks model</figcaption>
+            </figure>
+            <figure>
+              <a href="images/solar-mechanism.jpg" target="_blank"><img src="images/solar-mechanism.jpg" alt="Elevation stepper motor on the frame and the belt drive for the azimuth axis on the base" loading="lazy"></a>
+              <figcaption>Elevation motor and azimuth belt drive</figcaption>
+            </figure>
+            <figure>
+              <a href="images/solar-electronics.jpg" target="_blank"><img src="images/solar-electronics.jpg" alt="Inside the control box: power supply, Arduino Uno, Bluetooth module, buttons and two TB6600 drivers" loading="lazy"></a>
+              <figcaption>Control box: Arduino, drivers and power supply</figcaption>
+            </figure>
+          </div>
         </div>
       </article>
     </div>
