@@ -77,9 +77,25 @@
     content: "Figure coming soon"; display: flex; align-items: center; justify-content: center;
     height: 220px; border: 2px dashed var(--line); border-radius: 6px; color: var(--muted); font-size: .9rem;
   }
-  .gallery { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .gallery img { height: 200px; object-fit: contain; background: #f3f5f7; }
-  @media (max-width: 760px) { .gallery { grid-template-columns: 1fr; } }
+  /* Featured project */
+  .project.feature { display: block; }
+  .feature-head p { max-width: 760px; color: var(--muted); }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 24px 0 28px; }
+  .stats div { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; }
+  .stats .num { display: block; font-size: 1.5rem; font-weight: 700; color: var(--accent); line-height: 1.2; }
+  .stats .lbl { font-size: .88rem; color: var(--muted); }
+  .feature-body { display: grid; grid-template-columns: 1.55fr 1fr; gap: 28px; align-items: start; }
+  .feature-body .chart img { border: none; }
+  .project .steps { display: block; margin: 0; }
+  .steps dt { font-weight: 700; color: var(--ink); margin-top: 4px; }
+  .steps dd { color: var(--muted); font-size: .95rem; margin: 2px 0 16px; }
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 28px 0 18px; }
+  .gallery figure { background: #f3f5f7; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+  .gallery img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border: none; border-radius: 0; }
+  .gallery figcaption { padding: 10px 14px; margin: 0; background: var(--card); border-top: 1px solid var(--line); font-weight: 600; color: var(--ink); }
+  @media (max-width: 760px) {
+    .stats, .feature-body, .gallery { grid-template-columns: 1fr; }
+  }
   .highlight { border-left: 3px solid var(--accent); padding-left: 12px; }
 
   /* Skills */
@@ -139,37 +155,47 @@
       <p class="lead">Three projects across thermal engineering, turbulence modelling and mechanical design.</p>
 
       <!-- PROJECT 1 — GSS heat exchanger -->
-      <article class="project">
-        <div>
+      <article class="project feature">
+        <div class="feature-head">
           <div class="kicker">Licence thesis · Internship at GSS (SONATRACH–SINOPEC) · 2024</div>
           <h3>Cooling the air intake of an MS5002B gas turbine</h3>
-          <p>A gas turbine loses efficiency when the air it takes in is hot. The MS5002B is rated at 28 % efficiency at 15 °C, but at the Zarzaitine site the ambient temperature reaches 41 °C in summer. I designed a finned-tube heat exchanger to cool the intake air before it enters the compressor.</p>
-          <dl>
-            <dt>Design</dt><dd>Continuous finned-tube exchanger (copper tubes, aluminium fins) modelled in SolidWorks and placed in the turbine intake</dd>
-            <dt>Simulation</dt><dd>CFD on a representative sub-model in SolidWorks Flow Simulation: 9 cases, 3 fin counts (200 / 250 / 376) × 3 ambient temperatures (20 / 32 / 40 °C), chilled water at 5 °C</dd>
-            <dt>Analysis</dt><dd>Outlet air temperature turned into monthly turbine efficiency using a temperature-correction rule based on manufacturer data</dd>
-          </dl>
-          <p class="highlight">The 376-fin design gave the coldest outlet air all year. In July, estimated efficiency rises from 20.5 % to 27.0 %. Over the year, the average rises from 23.5 % to 27.9 %.</p>
-          <div class="chips"><span class="chip">Heat exchangers</span><span class="chip">CFD</span><span class="chip">SolidWorks</span><span class="chip">Flow Simulation</span><span class="chip">Gas turbines</span></div>
+          <p>A gas turbine loses efficiency when the air it takes in is hot. The MS5002B is rated at 28 % at 15 °C, but at the Zarzaitine site the air reaches 41 °C in summer. I designed a finned-tube heat exchanger that cools the intake air before it enters the compressor.</p>
         </div>
-        <figure>
-          <img src="images/gss-efficiency.png" alt="Turbine efficiency per month with and without the heat exchanger" onerror="this.parentElement.classList.add('missing')">
-          <figcaption>Estimated efficiency per month, without the exchanger and with each fin count.</figcaption>
-        </figure>
+
+        <div class="stats">
+          <div><span class="num">9</span><span class="lbl">CFD cases: 3 fin counts × 3 air temperatures</span></div>
+          <div><span class="num">20.5 → 27.0 %</span><span class="lbl">Estimated efficiency in July</span></div>
+          <div><span class="num">+4.5 pts</span><span class="lbl">Average gain over the year</span></div>
+        </div>
+
+        <div class="feature-body">
+          <figure class="chart">
+            <a href="images/gss-efficiency.png" target="_blank"><img src="images/gss-efficiency.png" alt="Turbine efficiency per month with and without the heat exchanger" onerror="this.parentElement.classList.add('missing')"></a>
+            <figcaption>Estimated efficiency per month, without the exchanger and with each fin count.</figcaption>
+          </figure>
+          <dl class="steps">
+            <dt>1 · Design</dt><dd>Continuous finned-tube exchanger (copper tubes, aluminium fins) modelled in SolidWorks and placed in the turbine intake.</dd>
+            <dt>2 · Simulation</dt><dd>CFD on a representative sub-model in SolidWorks Flow Simulation, with 200, 250 and 376 fins, air at 20, 32 and 40 °C, and chilled water at 5 °C.</dd>
+            <dt>3 · Analysis</dt><dd>Outlet air temperature turned into monthly turbine efficiency with a temperature-correction rule from manufacturer data. The 376-fin design gave the coldest air all year.</dd>
+          </dl>
+        </div>
+
         <div class="gallery">
           <figure>
-            <img src="images/gss-cad.jpg" alt="SolidWorks assembly of the finned-tube heat exchanger" onerror="this.parentElement.classList.add('missing')">
-            <figcaption>SolidWorks assembly: casing, 376 fins, copper tubes, collectors.</figcaption>
+            <a href="images/gss-cad.jpg" target="_blank"><img src="images/gss-cad.jpg" alt="SolidWorks assembly of the finned-tube heat exchanger" onerror="this.parentElement.classList.add('missing')"></a>
+            <figcaption>SolidWorks assembly</figcaption>
           </figure>
           <figure>
-            <img src="images/gss-intake.jpg" alt="Heat exchanger placed in the turbine air intake duct" onerror="this.parentElement.classList.add('missing')">
-            <figcaption>Exchanger installed in the turbine air intake.</figcaption>
+            <a href="images/gss-intake.jpg" target="_blank"><img src="images/gss-intake.jpg" alt="Heat exchanger placed in the turbine air intake duct" onerror="this.parentElement.classList.add('missing')"></a>
+            <figcaption>Position in the air intake</figcaption>
           </figure>
           <figure>
-            <img src="images/gss-cfd.jpg" alt="Flow Simulation result showing streamlines and air temperature" onerror="this.parentElement.classList.add('missing')">
-            <figcaption>Flow Simulation result: air streamlines and temperature, 40 °C inlet, 376 fins.</figcaption>
+            <a href="images/gss-cfd.jpg" target="_blank"><img src="images/gss-cfd.jpg" alt="Flow Simulation result showing streamlines and air temperature" onerror="this.parentElement.classList.add('missing')"></a>
+            <figcaption>Flow Simulation: 40 °C air in, 376 fins</figcaption>
           </figure>
         </div>
+
+        <div class="chips"><span class="chip">Heat exchangers</span><span class="chip">CFD</span><span class="chip">SolidWorks</span><span class="chip">Flow Simulation</span><span class="chip">Gas turbines</span></div>
       </article>
 
       <!-- PROJECT 2 — Turbulent duct flow -->
