@@ -5,6 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AISSAT Mohamed Rayan · Thermal engineering and numerical simulation</title>
 <meta name="description" content="Portfolio of AISSAT Mohamed Rayan, M2 MSME student at Université Paul Sabatier Toulouse III: heat transfer, CFD and mechanical design projects.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rayanaissat22-droid.github.io/">
+<meta property="og:title" content="AISSAT Mohamed Rayan · Thermal engineering and numerical simulation">
+<meta property="og:description" content="M2 MSME student at Université Paul Sabatier Toulouse III. Heat transfer, CFD and mechanical design projects. Looking for a 4 to 6 month internship from February 2027.">
+<meta property="og:image" content="https://rayanaissat22-droid.github.io/images/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&display=swap" rel="stylesheet">
@@ -192,7 +203,12 @@
   
   @media (max-width: 900px) {
     .wrap { padding: 0 20px; }
-    .bar nav { display: none; }
+    .bar .wrap { flex-wrap: wrap; height: auto; padding-top: 14px; padding-bottom: 0; row-gap: 6px; }
+    .bar nav { width: 100%; gap: 22px; overflow-x: auto; white-space: nowrap; padding: 4px 0 12px; scrollbar-width: none; }
+    .bar nav::-webkit-scrollbar { display: none; }
+  }
+  @media (max-width: 480px) {
+    .bar nav .long { display: none; }
     .intro { grid-template-columns: 1fr; gap: 28px; padding-top: 48px; padding-bottom: 40px; }
     .about .wrap { grid-template-columns: 1fr; }
     .steps, .steps-4, .gallery { grid-template-columns: 1fr; }
@@ -209,7 +225,7 @@
     <nav aria-label="Sections">
       <a href="#projects">Projects</a>
       <a href="#resume">Resume</a>
-      <a href="#about">Skills and education</a>
+      <a href="#about">Skills<span class="long"> and education</span></a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -313,7 +329,7 @@
         <h2>Education</h2>
         <ul>
           <li><strong>Master MSME, modelling and simulation in mechanics and energy</strong>Université Paul Sabatier Toulouse III, now</li>
-          <li><strong>Master 1 in Mechanical Manufacturing</strong>Université de Constantine 1</li>
+          <li><strong>Master 1 in Mechanical Manufacturing</strong>Université de Constantine 1, 2025</li>
           <li><strong>Licence in Mechanical Production and Industrialisation</strong>Université de Constantine 1, 2024</li>
           <li>French C1 (TCF), English C2 (EF SET)</li>
         </ul>
